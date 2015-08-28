@@ -16,6 +16,8 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
+"delete が効かないときの設定
+set backspace=indent,eol,start
 
 
 "** 文字設定 **
@@ -60,6 +62,11 @@ omap <silent> <C-e>      :NERDTreeToggle<CR>
 set laststatus=2
 "screen を 256色対応で
 set t_Co=256
+"不可視文字の文字の可視化
+set list
+set listchars=tab:»-,trail:-,eol:¬,extends:»,precedes:«,nbsp:%
+"シンタックス
+syntax on
 
 "** プリンタ設定 **
 "行番号の表示、余白
@@ -137,20 +144,15 @@ function! MyMode()
 endfunction
 
 "** カラースキーマ設定 (スキーマはダウンロードしてくる)**
-""colorscheme molokai
 ""let g:molokai_original=1
 colorscheme lucius 
-""colorscheme atom 
-""colorscheme atom-dark-256
-""colorscheme hybrid 
-""colorscheme lucario 
 set background=dark
 
 
 
 
 "**プログラミング言語別設定**
-"=====phpの基本設定=====
+"===phpの基本設定===
 let php_sql_query = 1
 let php_baselib = 1
 let php_htmlInStrings = 1
@@ -186,6 +188,7 @@ let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby', 'python'] }
 ""let g:syntastic_ruby_checkers = ['rubocop']
 
+
 "---------------------------
 " Start Neobundle Settings.
 "---------------------------
@@ -201,7 +204,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " --------ここから追加のプラグイン---------
 
-" NERDTreeを設定                  
+" NERDTreeを設定
 NeoBundle 'scrooloose/nerdtree'
 
 " 自動の綴じカッコ
@@ -217,7 +220,6 @@ NeoBundle 'Shougo/vimproc'
 
 " html/CSS入力補助プラグイン
 NeoBundle 'mattn/emmet-vim'
-let g:user_emmet_leader_key='<c-k>'
 
 " インデントをスペースで可視化
 NeoBundle 'Yggdroot/indentLine'
@@ -234,19 +236,22 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'marcus/rsense'
 NeoBundle 'supermomonga/neocomplete-rsense.vim'
 
+
 " 各種スニペット
 NeoBundle 'Shougo/neosnippet-snippets'
 
-" シンタックスチェック(静的解析)
+" シンタックスチェック
 NeoBundle 'scrooloose/syntastic'
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 
+
 " ドキュメント参照
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'yuku-t/vim-ref-ri'
+
 
 " Plugin key-mappings.  " <C-k>でsnippetの展開
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -267,8 +272,27 @@ NeoBundle 'davidhalter/jedi-vim'
 "
 "コメントアウトプラグイン
 NeoBundle 'tomtom/tcomment_vim'
-"自動pasteモード
+
+"set pasteモード自動化
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
+
+"カラースキーム
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'croaker/mustang-vim'
+NeoBundle 'jeffreyiacono/vim-colors-wombat'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'vim-scripts/Lucius'
+NeoBundle 'vim-scripts/Zenburn'
+NeoBundle 'mrkn/mrkn256.vim'
+NeoBundle 'jpo/vim-railscasts-theme'
+NeoBundle 'therubymug/vim-pyte'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'raphamorim/lucario'
+NeoBundle 'vim-scripts/desertEx'
+
+" カラースキーム一覧表示に Unite.vim を使う
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'ujihisa/unite-colorscheme'
 " --------ここまで追加のプラグイン---------
 
 
