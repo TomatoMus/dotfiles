@@ -46,6 +46,13 @@ vnoremap " "zdi^V"<C-R>z^V"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>
 " 挿入モードを出る時，現在の IME の状態を保存し，IME をオフにする．（Gvimのみ）
 set imdisable
+"smartchr
+inoremap <buffer> <expr> = smartchr#loop('=', ' = ', ' == ')
+inoremap <buffer> <expr> <S-=> smartchr#loop('+', ' + ')
+inoremap <buffer> <expr> - smartchr#loop('-', ' - ')
+inoremap <buffer> <expr> , smartchr#loop(',', ', ')
+inoremap <buffer> <expr> . smartchr#loop('.', '<%=  %>', '<%  %>')
+
 
 "** 表示設定 **
 "行番号表示
@@ -53,7 +60,7 @@ set number
 "選択箇所をハイライト"
 set hlsearch
 "隠しファイルをデフォルトで表示させる
-let NERDTreeShowHidden = 1 
+let NERDTreeShowHidden = 1
 "<C-e>でNERDTreeをオンオフ。いつでもどこでも。
 nmap <silent> <C-e>      :NERDTreeToggle<CR>
 vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
@@ -187,9 +194,32 @@ endfunction
 
 "** カラースキーマ設定 (スキーマはダウンロードしてくる)**
 ""let g:molokai_original=1
-colorscheme lucius 
+colorscheme lucius
 set background=dark
 
+"""""""""""""""""""""""""""""
+" Unit.vimの設定
+""""""""""""""""""""""""""""""
+" 入力モードで開始する
+let g:unite_enable_start_insert=1
+" バッファ一覧
+noremap <C-P> :Unite buffer<CR>
+" ファイル一覧
+noremap <C-N> :Unite -buffer-name=file file<CR>
+" 最近使ったファイルの一覧
+noremap <C-Z> :Unite file_mru<CR>
+" sourcesを「今開いているファイルのディレクトリ」とする
+noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+""""""""""""""""""""""""""""""
 
 
 
@@ -236,10 +266,10 @@ let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby', 'py
 "---------------------------
 " bundleで管理するディレクトリを指定
 set runtimepath+=~/.vim/bundle/neobundle.vim/
- 
+
 " Required:
 call neobundle#begin(expand('~/.vim/bundle/'))
- 
+
 " neobundle自体をneobundleで管理
 NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -277,10 +307,6 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'marcus/rsense'
 NeoBundle 'supermomonga/neocomplete-rsense.vim'
-
-
-" 各種スニペット
-NeoBundle 'Shougo/neosnippet-snippets'
 
 " シンタックスチェック
 NeoBundle 'scrooloose/syntastic'
@@ -335,17 +361,27 @@ NeoBundle 'vim-scripts/desertEx'
 " カラースキーム一覧表示に Unite.vim を使う
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
+
+" Unite.vimで最近使ったファイルを表示できるようにする
+NeoBundle 'Shougo/neomru.vim'
+
+" 行末の半角スペースを可視化
+NeoBundle 'bronson/vim-trailing-whitespace'
+
+" 同じキーの複数回入力で入力補完
+NeoBundle 'kana/vim-smartchr'
+
 " --------ここまで追加のプラグイン---------
 
 
 call neobundle#end()
- 
+
 " Required:
 filetype plugin indent on
- 
+
 " 追加つすときの確認をするかどうか
 NeoBundleCheck
- 
+
 "-------------------------
 " End Neobundle Settings.
 "-------------------------

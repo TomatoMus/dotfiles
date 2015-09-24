@@ -132,3 +132,8 @@ function ph() {
     echo `echo $p | sed -E 's/%.| //g'` $reset_color $d
   done
 }
+
+# gvim newtab
+alias mvi="mvim --remote-tab-silent"
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
