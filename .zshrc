@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/matsumotoyasuyuki/.oh-my-zsh
+export ZSH=/home/yasu/.oh-my-zsh
+#export ZSH=/Users/matsumotoyasuyuki/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -136,4 +137,9 @@ function ph() {
 # gvim newtab
 alias mvi="mvim --remote-tab-silent"
 export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
+eval "$(anyenv init - zsh)"
+
+# install go
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin

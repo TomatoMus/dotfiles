@@ -261,6 +261,10 @@ let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby', 'py
 ""let g:syntastic_ruby_checkers = ['rubocop']
 
 
+
+"=====Markdownの基本設定=====
+au BufRead,BufNewFile *.md set filetype=markdown
+
 "---------------------------
 " Start Neobundle Settings.
 "---------------------------
@@ -370,6 +374,15 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 
 " 同じキーの複数回入力で入力補完
 NeoBundle 'kana/vim-smartchr'
+
+" Markdownプレビュー(:PrevimOpenコマンド)
+NeoBundle 'kannokanno/previm'
+
+" ブラウザ処理
+NeoBundle 'tyru/open-browser.vim'
+
+" Markdown拡張子の対応
+NeoBundle 'plasticboy/vim-markdown'
 
 " --------ここまで追加のプラグイン---------
 
