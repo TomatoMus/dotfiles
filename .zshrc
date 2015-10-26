@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/yasu/.oh-my-zsh
-#export ZSH=/Users/matsumotoyasuyuki/.oh-my-zsh
+# export ZSH=/home/yasu/.oh-my-zsh
+export ZSH=/Users/matsumotoyasuyuki/.oh-my-zsh
 #[alias]
 alias vi='vim'
 alias mvi="mvim --remote-tab-silent"
