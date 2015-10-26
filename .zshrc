@@ -5,6 +5,7 @@ export ZSH=/Users/matsumotoyasuyuki/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
+# phコマンドで意味表示
 ZSH_THEME="wedisagree"
 #ZSH_THEME="agnoster"
 #ZSH_THEME="avit"
@@ -137,3 +138,6 @@ function ph() {
 alias mvi="mvim --remote-tab-silent"
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
+
+
+export PATH=/usr/local/etc/clamav/:/usr/local/Cellar/php55/5.5.29/bin:/usr/local/Cellar/php55/5.5.29/bin/pear:/usr/local/Cellar/php55/5.5.29:/usr/local/opt/icu4c/lib:/usr/local/opt/icu4c/include:$PATH

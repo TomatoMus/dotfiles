@@ -193,9 +193,11 @@ function! MyMode()
 endfunction
 
 "** カラースキーマ設定 (スキーマはダウンロードしてくる)**
-""let g:molokai_original=1
+" let g:molokai_original=1
 colorscheme lucius
+" colorscheme molokai
 set background=dark
+" set background=light
 
 """""""""""""""""""""""""""""
 " Unit.vimの設定
@@ -259,6 +261,9 @@ let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
 "rubocop
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby', 'python'] }
 ""let g:syntastic_ruby_checkers = ['rubocop']
+
+"=====Markdownの基本設定=====
+au BufRead,BufNewFile *.md set filetype=markdown
 
 
 "---------------------------
@@ -370,6 +375,16 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 
 " 同じキーの複数回入力で入力補完
 NeoBundle 'kana/vim-smartchr'
+
+" Markdownプレビュー(:PrevimOpenコマンド)
+NeoBundle 'kannokanno/previm'
+
+" ブラウザ処理
+NeoBundle 'tyru/open-browser.vim'
+
+" Markdown拡張子の対応
+NeoBundle 'plasticboy/vim-markdown'
+
 
 " --------ここまで追加のプラグイン---------
 
