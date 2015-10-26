@@ -19,7 +19,6 @@ inoremap <Right> <Nop>
 "delete が効かないときの設定
 set backspace=indent,eol,start
 
-
 "** 文字設定 **
 "Rictyフォントpowerline版
 set guifont=Ricty\ for\ Powerline\ 12
