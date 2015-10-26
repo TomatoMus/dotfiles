@@ -263,7 +263,7 @@ let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby', 'py
 
 
 "=====Markdownの基本設定=====
-au BufRead,BufNewFile *.md set filetype=markdown
+"au BufRead,BufNewFile *.md set filetype=markdown
 
 "---------------------------
 " Start Neobundle Settings.
@@ -383,6 +383,12 @@ NeoBundle 'tyru/open-browser.vim'
 
 " Markdown拡張子の対応
 NeoBundle 'plasticboy/vim-markdown'
+
+" RailsにおけるERBファイルの補完
+NeoBundle 'tpope/vim-rails'
+
+" 任意の文字で囲うプラグイン 
+NeoBundle 'tpope/vim-surround'
 
 " --------ここまで追加のプラグイン---------
 
