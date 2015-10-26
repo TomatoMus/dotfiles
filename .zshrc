@@ -1,6 +1,15 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/yasu/.oh-my-zsh
 #export ZSH=/Users/matsumotoyasuyuki/.oh-my-zsh
+#[alias]
+alias vi='vim'
+alias mvi="mvim --remote-tab-silent"
+
+alias add='git add .'
+alias pull='git pull'
+alias push='git push'
+alias st='git status'
+alias stt='git status -uno'
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -91,9 +100,6 @@ source $ZSH/oh-my-zsh.sh
 # path
 export PATH=/usr/local/bin:/usr/bin:$PATH
 
-# change vim alias
-alias vi='vim'
-
 # peco setting
 function peco-select-history() {
     local tac
@@ -136,7 +142,6 @@ function ph() {
 }
 
 # gvim newtab
-alias mvi="mvim --remote-tab-silent"
 export PATH="$HOME/.anyenv/bin:$PATH"
 
 
