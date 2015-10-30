@@ -31,7 +31,11 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 " indentLine の文字を変更
-let g:indentLine_char = '|'
+" let g:indentLine_char = '|'
+" let g:indentLine_char = '│'
+" let g:indentLine_char = '⁚'
+" let g:indentLine_char = '⁝'
+let g:indentLine_char = '◗'
 " 括弧系閉じ補完
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
@@ -70,7 +74,7 @@ set laststatus=2
 set t_Co=256
 "不可視文字の文字の可視化
 set list
-set listchars=tab:»-,trail:-,eol:¬,extends:»,precedes:«,nbsp:%
+set listchars=tab:»-,trail:⋯,eol:¬,extends:»,precedes:«,nbsp:%
 "シンタックス
 syntax on
 " 初期状態はcursorlineを表示しない
@@ -193,9 +197,10 @@ endfunction
 
 "** カラースキーマ設定 (スキーマはダウンロードしてくる)**
 " let g:molokai_original=1
-colorscheme lucius
+" colorscheme lucius
+colorscheme atom-dark-256
 " colorscheme molokai
-set background=dark
+" set background=dark
 " set background=light
 
 """""""""""""""""""""""""""""
