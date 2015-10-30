@@ -193,9 +193,12 @@ endfunction
 
 "** カラースキーマ設定 (スキーマはダウンロードしてくる)**
 " let g:molokai_original=1
-colorscheme lucius
+" colorscheme lucius
+colorscheme espresso
+" colorscheme kalisi
+" colorscheme zenburn
 " colorscheme molokai
-set background=dark
+" set background=dark
 " set background=light
 
 """""""""""""""""""""""""""""
