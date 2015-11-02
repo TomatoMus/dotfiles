@@ -266,6 +266,12 @@ let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby', 'python'] }
 ""let g:syntastic_ruby_checkers = ['rubocop']
 
+"def,endなどのカーソル移動
+if !exists('loaded_matchit')
+  " matchitを有効化
+  runtime macros/matchit.vim
+endif
+
 "=====Markdownの基本設定=====
 au BufRead,BufNewFile *.md set filetype=markdown
 
