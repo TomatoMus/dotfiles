@@ -153,3 +153,8 @@ eval "$(anyenv init - zsh)"
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+# vim のエンコード問題対策
+for F in ~/.vim/bundle/rsense/doc/*.ja.txt; do
+    mv $F $F:r:r.jax
+done
