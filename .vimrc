@@ -430,7 +430,8 @@ function! s:bundle.hooks.on_source(bundle)
     call submode#map('changetab', 'n', '', 'T', 'gT')
 endfunction
 
-
+" Railsアプリ内でvim上でdbのクエリ実行
+NeoBundle 'dbext.vim'
 
 
 
