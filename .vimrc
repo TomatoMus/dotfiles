@@ -433,6 +433,8 @@ endfunction
 " Railsアプリ内でvim上でdbのクエリ実行
 NeoBundle 'dbext.vim'
 
+" CakePHPでのファイル移動
+NeoBundle 'violetyk/cake.vim'
 
 
 " --------ここまで追加のプラグイン---------
