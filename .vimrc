@@ -122,6 +122,8 @@ augroup vimrc-auto-cursorline
   endfunction
 augroup END
 
+
+
 "** プリンタ設定 **
 "行番号の表示、余白
 set printoptions=number:y,left:5pc
@@ -271,6 +273,12 @@ let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby', 'python'] }
 ""let g:syntastic_ruby_checkers = ['rubocop']
 
+"def,endなどのカーソル移動
+if !exists('loaded_matchit')
+  " matchitを有効化
+  runtime macros/matchit.vim
+endif
+
 "=====Markdownの基本設定=====
 au BufRead,BufNewFile *.md set filetype=markdown
 
@@ -401,8 +409,38 @@ NeoBundle 'plasticboy/vim-markdown'
 " RailsにおけるERBファイルの補完
 NeoBundle 'tpope/vim-rails'
 
-" 任意の文字で囲うプラグイン 
+" 任意の文字で囲うプラグイン
 NeoBundle 'tpope/vim-surround'
+
+" 連続コマンド入力プラグイン
+" NeoBundle 'kana/vim-submode'
+NeoBundle 'thinca/vim-submode'
+let s:bundle = neobundle#get("vim-submode")
+function! s:bundle.hooks.on_source(bundle)
+    " ウィンドウサイズの変更キーを簡易化する
+    " [C-w],[+]または、[C-w],[-]
+    call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+    call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+    call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
+    call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
+    call submode#map('winsize', 'n', '', '>', '<C-w>>')
+    call submode#map('winsize', 'n', '', '<', '<C-w><')
+    call submode#map('winsize', 'n', '', '+', '<C-w>+')
+    call submode#map('winsize', 'n', '', '-', '<C-w>-')
+    " タブ移動のキーを簡易化する
+    " [gt]または[gT]
+    call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
+    call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
+    call submode#map('changetab', 'n', '', 't', 'gt')
+    call submode#map('changetab', 'n', '', 'T', 'gT')
+endfunction
+
+" Railsアプリ内でvim上でdbのクエリ実行
+NeoBundle 'dbext.vim'
+
+" CakePHPでのファイル移動
+NeoBundle 'violetyk/cake.vim'
+
 
 " --------ここまで追加のプラグイン---------
 
@@ -418,4 +456,13 @@ NeoBundleCheck
 "-------------------------
 " End Neobundle Settings.
 "-------------------------
+
+
+
+"-------------------------
+" Install.
+"-------------------------
+"$ mkdir -p ~/.vim/bundle
+"$ git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+
 
