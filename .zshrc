@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/yasu/.oh-my-zsh
-#export ZSH=/Users/matsumotoyasuyuki/.oh-my-zsh
+# export ZSH=/Users/matsumotoyasuyuki/.oh-my-zsh
 #[alias]
 alias vi='vim'
 alias mvi="mvim --remote-tab-silent"
@@ -153,3 +153,8 @@ eval "$(anyenv init - zsh)"
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+# cdなしでディレクトリ名を直接指定して移動
+# cd したら ls
+setopt auto_cd
+function chpwd(){ ls }
