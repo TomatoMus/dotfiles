@@ -329,7 +329,7 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'marcus/rsense'
 NeoBundle 'supermomonga/neocomplete-rsense.vim'
 
-" シンタックスチェック
+" シンタックスチェック(サーバなどの環境では特殊文字でおこられる)
 NeoBundle 'scrooloose/syntastic'
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
