@@ -243,6 +243,7 @@ let php_baselib = 1
 let php_htmlInStrings = 1
 let php_noShortTags = 1
 let php_parent_error_close = 1
+let php_folding = 1
 
 " dbがmysqlの場合
 let g:sql_type_default='mysql'
