@@ -18,6 +18,8 @@ inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 "delete が効かないときの設定
 set backspace=indent,eol,start
+"undoの永続化
+set undofile
 
 "** 文字設定 **
 "Rictyフォントpowerline版
@@ -33,9 +35,9 @@ set shiftwidth=4
 " indentLine の文字を変更
 " let g:indentLine_char = '|'
 " let g:indentLine_char = '│'
-" let g:indentLine_char = '⁚'
+let g:indentLine_char = '⁚'
 " let g:indentLine_char = '⁝'
-let g:indentLine_char = '◗'
+" let g:indentLine_char = '◗'
 " 括弧系閉じ補完
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
@@ -200,6 +202,9 @@ endfunction
 "** カラースキーマ設定 (スキーマはダウンロードしてくる)**
 " let g:molokai_original=1
 " colorscheme lucius
+" colorscheme espresso
+" colorscheme kalisi
+" colorscheme zenburn
 colorscheme atom-dark-256
 " colorscheme molokai
 " set background=dark
