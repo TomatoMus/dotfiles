@@ -77,6 +77,10 @@ set t_Co=256
 "不可視文字の文字の可視化
 set list
 set listchars=tab:»-,trail:⋯,eol:¬,extends:»,precedes:«,nbsp:%
+"folding 設定
+set foldmethod=indent
+set foldnestmax=10
+set foldlevel=1
 "シンタックス
 syntax on
 " 初期状態はcursorlineを表示しない
