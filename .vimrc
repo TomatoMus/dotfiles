@@ -77,6 +77,10 @@ set t_Co=256
 "不可視文字の文字の可視化
 set list
 set listchars=tab:»-,trail:⋯,eol:¬,extends:»,precedes:«,nbsp:%
+"folding 設定
+set foldmethod=indent
+set foldnestmax=10
+set foldlevel=1
 "シンタックス
 syntax on
 " 初期状態はcursorlineを表示しない
@@ -243,6 +247,7 @@ let php_baselib = 1
 let php_htmlInStrings = 1
 let php_noShortTags = 1
 let php_parent_error_close = 1
+let php_folding = 1
 
 " dbがmysqlの場合
 let g:sql_type_default='mysql'
@@ -335,7 +340,7 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'marcus/rsense'
 NeoBundle 'supermomonga/neocomplete-rsense.vim'
 
-" シンタックスチェック
+" シンタックスチェック(サーバなどの環境では特殊文字でおこられる)
 NeoBundle 'scrooloose/syntastic'
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
