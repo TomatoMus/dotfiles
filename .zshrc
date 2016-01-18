@@ -10,6 +10,7 @@ alias pull='git pull'
 alias push='git push'
 alias st='git status'
 alias stt='git status -uno'
+alias up='cd ..'
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -154,14 +155,13 @@ export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
-<<<<<<< HEAD
 # cdなしでディレクトリ名を直接指定して移動
 # cd したら ls
 setopt auto_cd
 function chpwd(){ ls }
-=======
+
 # vim のエンコード問題対策
 for F in ~/.vim/bundle/rsense/doc/*.ja.txt; do
     mv $F $F:r:r.jax
 done
->>>>>>> b6f0d0c00d52530e3bc6bd0732bc55c0ae4c0d5a
+
