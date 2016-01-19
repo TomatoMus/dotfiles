@@ -229,3 +229,10 @@ function tmux_automatically_attach_session()
 }
 tmux_automatically_attach_session
 
+
+# warningに対する対処
+# .oh-my-zsh/completions
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+autoload -U compinit
+compinit -u
+
