@@ -20,6 +20,7 @@ inoremap <Right> <Nop>
 set backspace=indent,eol,start
 "undoの永続化
 set undofile
+set noundofile
 
 "** 文字設定 **
 "Rictyフォントpowerline版
@@ -328,7 +329,8 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
 
-" html/CSS入力補助プラグイン
+" html/CSS入力補助プラグイン.
+" 展開は<C-y>, なのカンマ忘れに注意
 NeoBundle 'mattn/emmet-vim'
 
 " インデントをスペースで可視化

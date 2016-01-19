@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
-# export ZSH=/home/yasu/.oh-my-zsh
-export ZSH=/Users/matsumotoyasuyuki/.oh-my-zsh
+export ZSH=/home/yasu/.oh-my-zsh
+# export ZSH=/Users/matsumotoyasuyuki/.oh-my-zsh
 #[alias]
 alias vi='vim'
 alias mvi="mvim --remote-tab-silent"
@@ -10,6 +10,7 @@ alias pull='git pull'
 alias push='git push'
 alias st='git status'
 alias stt='git status -uno'
+alias up='cd ..'
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -160,9 +161,9 @@ setopt auto_cd
 function chpwd(){ ls }
 
 # vim のエンコード問題対策
-#for F in ~/.vim/bundle/rsense/doc/*.ja.txt; do
-#    mv $F $F:r:r.jax
-#done
+# for F in ~/.vim/bundle/rsense/doc/*.ja.txt; do
+#     mv $F $F:r:r.jax
+# done
 
 
 # tmuxの自動起動
