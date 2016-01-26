@@ -1,4 +1,4 @@
-"** システム設定 **
+" ** システム設定 **
 "選択したワードをアスタリスクで検索"
 vnoremap * "zy:let @/ = @z<CR>n
 "ノーマルモードへの移行を＜Ctrl+j＞で行う
@@ -73,15 +73,22 @@ vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 omap <silent> <C-e>      :NERDTreeToggle<CR>
 " NERDTreeの自動起動
 " ファイル指定で開かれた場合はNERDTreeは表示しない
-if !argc()
-    autocmd vimenter * NERDTree|normal gg3j
-endif
+" if !argc()
+    " autocmd vimenter * NERDTree|normal gg3j
+" endif
 " ディレクトリ表示記号
 let g:NERDTreeDirArrows = 1
-" let g:NERDTreeDirArrowExpandable = '▸❐'
 let g:NERDTreeDirArrowExpandable = '❐'
 let g:NERDTreeDirArrowCollapsible = '▿'
-" let g:NERDTreeDirArrowCollapsible = '▿▸'
+" 起動時にブックマークを表示
+let g:NERDTreeShowBookmarks=1
+" NERDTreeを起動時に表示
+let g:nerdtree_tabs_open_on_gui_startup=1
+let g:nerdtree_tabs_open_on_console_startup=1
+" 起動時にディレクトリならNERDTree、ファイルならファイルにフォーカスをあてる
+let g:nerdtree_tabs_smart_startup_focus=1
+" 新規タブを開いた時にもNERDTreeを表示する
+let g:nerdtree_tabs_open_on_new_tab=1
 "エディタウィンドウの末尾から2行目にステータスラインを常時表示
 set laststatus=2
 "screen を 256色対応で
@@ -328,6 +335,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " NERDTreeを設定
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'jistr/vim-nerdtree-tabs'
 
 " 自動の綴じカッコ
 "NeoBundle 'Townk/vim-autoclose'
