@@ -1,15 +1,9 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/yasu/.oh-my-zsh
-# export ZSH=/Users/matsumotoyasuyuki/.oh-my-zsh
+# export ZSH=/home/yasu/.oh-my-zsh
+export ZSH=/Users/matsumotoyasuyuki/.oh-my-zsh
 #[alias]
 alias vi='vim'
 alias mvi="mvim --remote-tab-silent"
-
-alias add='git add .'
-alias pull='git pull'
-alias push='git push'
-alias st='git status'
-alias stt='git status -uno'
 alias up='cd ..'
 
 # Set name of the theme to load.
@@ -233,7 +227,9 @@ tmux_automatically_attach_session
 
 # warningに対する対処
 # .oh-my-zsh/completions
-fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
-autoload -U compinit
-compinit -u
+#fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+#fpath=(/path/to/homebrew/share/zsh-completions $fpath)
+#autoload -U compinit
+#compinit -u
+
 

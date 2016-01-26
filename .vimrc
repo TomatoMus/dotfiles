@@ -71,6 +71,17 @@ let NERDTreeShowHidden = 1
 nmap <silent> <C-e>      :NERDTreeToggle<CR>
 vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 omap <silent> <C-e>      :NERDTreeToggle<CR>
+" NERDTreeの自動起動
+" ファイル指定で開かれた場合はNERDTreeは表示しない
+if !argc()
+    autocmd vimenter * NERDTree|normal gg3j
+endif
+" ディレクトリ表示記号
+let g:NERDTreeDirArrows = 1
+" let g:NERDTreeDirArrowExpandable = '▸❐'
+let g:NERDTreeDirArrowExpandable = '❐'
+let g:NERDTreeDirArrowCollapsible = '▿'
+" let g:NERDTreeDirArrowCollapsible = '▿▸'
 "エディタウィンドウの末尾から2行目にステータスラインを常時表示
 set laststatus=2
 "screen を 256色対応で
@@ -79,9 +90,9 @@ set t_Co=256
 set list
 set listchars=tab:»-,trail:⋯,eol:¬,extends:»,precedes:«,nbsp:%
 "folding 設定
-set foldmethod=indent
-set foldnestmax=10
-set foldlevel=1
+" set foldmethod=indent
+" set foldnestmax=10
+" set foldlevel=1
 "シンタックス
 syntax on
 " 初期状態はcursorlineを表示しない
