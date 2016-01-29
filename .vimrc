@@ -267,6 +267,10 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 
 "**プログラミング言語別設定**
+"===pythonの基本設定===
+" シンタックスをpep8で行う
+let g:syntastic_python_checkers = ["flake8"]
+
 "===phpの基本設定===
 let php_sql_query = 1
 let php_baselib = 1
@@ -313,11 +317,6 @@ endif
 "=====Markdownの基本設定=====
 au BufRead,BufNewFile *.md set filetype=markdown
 
-
-
-"=====Markdownの基本設定=====
-"au BufRead,BufNewFile *.md set filetype=markdown
-
 "---------------------------
 " Start Neobundle Settings.
 "---------------------------
@@ -349,7 +348,7 @@ NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
 
 " html/CSS入力補助プラグイン.
-" 展開は<C-y>, なのカンマ忘れに注意
+" 展開は<C-y>, のカンマ忘れに注意
 NeoBundle 'mattn/emmet-vim'
 
 " インデントをスペースで可視化
@@ -474,6 +473,16 @@ NeoBundle 'dbext.vim'
 " CakePHPでのファイル移動
 NeoBundle 'violetyk/cake.vim'
 
+" pythonのコーディング規約チェック
+NeoBundle "andviro/flake8-vim"
+let g:PyFlakeOnWrite = 1
+let g:PyFlakeCheckers = 'pep8'
+
+" pep8基準のインデント
+NeoBundle "hynek/vim-python-pep8-indent"
+
+" :Tlist
+NeoBundle 'taglist.vim'
 
 " --------ここまで追加のプラグイン---------
 
