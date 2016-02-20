@@ -232,4 +232,7 @@ tmux_automatically_attach_session
 #autoload -U compinit
 #compinit -u
 
-
+# pyenvの環境パス
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
