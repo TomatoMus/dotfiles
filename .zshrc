@@ -236,3 +236,10 @@ tmux_automatically_attach_session
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# rbenvの環境パス
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# neovim
+export XDG_CONFIG_HOME=$HOME/.config

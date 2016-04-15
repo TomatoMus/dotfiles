@@ -85,6 +85,7 @@ let g:NERDTreeShowBookmarks=1
 " NERDTreeを起動時に表示
 let g:nerdtree_tabs_open_on_gui_startup=1
 let g:nerdtree_tabs_open_on_console_startup=1
+let NERDTreeWinSize=24
 " 起動時にディレクトリならNERDTree、ファイルならファイルにフォーカスをあてる
 let g:nerdtree_tabs_smart_startup_focus=1
 " 新規タブを開いた時にもNERDTreeを表示する
@@ -236,6 +237,7 @@ endfunction
 " colorscheme kalisi
 " colorscheme zenburn
 colorscheme atom-dark-256
+" colorscheme onedark
 " colorscheme molokai
 " set background=dark
 " set background=light
@@ -305,8 +307,8 @@ endif
 let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
 
 "rubocop
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby', 'python'] }
-""let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['ruby', 'python'] }
+let g:syntastic_ruby_checkers = ['rubocop']
 
 "def,endなどのカーソル移動
 if !exists('loaded_matchit')
@@ -425,6 +427,7 @@ NeoBundle 'Shougo/neomru.vim'
 
 " 行末の半角スペースを可視化
 NeoBundle 'bronson/vim-trailing-whitespace'
+autocmd BufWritePre * :FixWhitespace
 
 " 同じキーの複数回入力で入力補完
 NeoBundle 'kana/vim-smartchr'
@@ -484,6 +487,26 @@ NeoBundle "hynek/vim-python-pep8-indent"
 " :Tlist
 NeoBundle 'taglist.vim'
 
+
+" open-browser (カーソルの下にある単語をgxで調べてくれる)
+NeoBundle 'tyru/open-browser.vim'
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+
+" dash.vim (カーソルの下にあるプログラムの単語を<Leader>d(Leaderはデフォルトだと\)でDashで調べてくれる)
+NeoBundle 'rizzatti/dash.vim'
+nmap <Leader>d <Plug>DashSearch
+
+" Gitを便利に使う
+NeoBundle 'tpope/vim-fugitive'
+" grep検索の実行後にQuickFix Listを表示する
+autocmd QuickFixCmdPost *grep* cwindow
+" ステータス行に現在のgitブランチを表示する
+set statusline+=%{fugitive#statusline()}
+
+" sublimeライクなminimapの表示
+NeoBundle 'severin-lemaignan/vim-minimap'
+let g:minimap_highlight='Visual'
 " --------ここまで追加のプラグイン---------
 
 
