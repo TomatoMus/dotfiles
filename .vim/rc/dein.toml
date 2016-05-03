@@ -62,3 +62,6 @@ repo = 'rizzatti/dash.vim'
 [[plugins]]
 repo = 'aperezdc/vim-template'
 
+# Generate a beautiful color swatch of the current color scheme
+[[plugins]]
+repo = 'cocopon/colorswatch.vim'

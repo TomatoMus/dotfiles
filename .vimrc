@@ -79,6 +79,9 @@ set noswapfile
 " View:
 "
 
+" 起動時メッセージを表示しない
+set shortmess& shortmess+=I
+
 " カラースキーマ
 colorscheme atom-dark-256
 
@@ -139,6 +142,15 @@ augroup END
 " ウィンドウの境界線の設定
 set fillchars+=vert:\⎢
 hi! VertSplit ctermfg=235 ctermbg=235 term=NONE
+
+" 初期起動時の空行のチルダの設定
+hi! NonText ctermfg=234 ctermbg=234 term=NONE
+
+" Wrap Guide(80:warning, 120:danger)
+set textwidth=80
+set colorcolumn=+1
+let &colorcolumn="80,".join(range(120,999),",")
+
 
 "---------------------------------------------------------------------------
 " FileType:
