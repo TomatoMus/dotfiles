@@ -3,6 +3,7 @@
 vnoremap * "zy:let @/ = @z<CR>n
 "ノーマルモードへの移行を＜Ctrl+j＞で行う
 imap <C-j> <esc>
+vmap <C-j> <esc>
 "swpファイルをつくらない
 set noswapfile
 "ヤンクでクリップボードにコピー
@@ -39,6 +40,7 @@ set shiftwidth=4
 let g:indentLine_char = '⁚'
 " let g:indentLine_char = '⁝'
 " let g:indentLine_char = '◗'
+let g:indentLine_color_term = 239
 " 括弧系閉じ補完
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
