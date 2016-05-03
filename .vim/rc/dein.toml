@@ -1,1 +1,40 @@
-dein.toml
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# Vim syntax for TOML.
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+# A tree explorer
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+
+# NERDTree and tabs together
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
+
+# A light and configurable statusline
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+# Displaying the indention levels with thin vertical lines
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+# File-type sensible comments
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+# Highlights trailing whitespace in red and provides :FixWhitespace to fix it.
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+# Handles bracketed-paste-mode
+[[plugins]]
+repo = 'ConradIrwin/vim-bracketed-paste'
+
+# Delete/change/add parentheses/quotes/XML-tags/much more with ease
+[[plugins]]
+repo = 'tpope/vim-surround'
+
