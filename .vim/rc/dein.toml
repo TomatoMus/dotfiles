@@ -38,3 +38,27 @@ repo = 'ConradIrwin/vim-bracketed-paste'
 [[plugins]]
 repo = 'tpope/vim-surround'
 
+# The standard snippets repository for neosnippet
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+# Syntax checking hacks
+[[plugins]]
+repo = 'scrooloose/syntastic'
+
+# Insert several candidates with a single key
+[[plugins]]
+repo = 'kana/vim-smartchr'
+
+# Open URI with your favorite browser
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+# Search Dash.app [\d]
+[[plugins]]
+repo = 'rizzatti/dash.vim'
+
+# Simple templates plugin
+[[plugins]]
+repo = 'aperezdc/vim-template'
+

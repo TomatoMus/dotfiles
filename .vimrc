@@ -1,47 +1,174 @@
-" ** システム設定 **
-"選択したワードをアスタリスクで検索"
-vnoremap * "zy:let @/ = @z<CR>n
-"ノーマルモードへの移行を＜Ctrl+j＞で行う
-imap <C-j> <esc>
-vmap <C-j> <esc>
-"swpファイルをつくらない
+"---------------------------------------------------------------------------
+" Yasu's .vimrc
+"---------------------------------------------------------------------------
+
+"---------------------------------------------------------------------------
+" Initialize:
+"
+if &compatible
+  set nocompatible
+endif
+
+" プラグインが実際にインストールされるディレクトリ
+let s:dein_dir = expand('~/.vim/dein')
+let g:rc_dir = expand('~/.vim/rc')
+" dein.vim 本体
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+" dein.vim がなければ github から落としてくる
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+endif
+" 設定開始
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+  " プラグインリストを収めた TOML ファイル
+  let s:toml      = g:rc_dir . '/dein.toml'
+  let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
+  " TOML を読み込み、キャッシュしておく
+  call dein#load_toml(s:toml,      {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+  " 設定終了
+  call dein#end()
+  call dein#save_state()
+endif
+" もし、未インストールものものがあったらインストール
+if dein#check_install()
+  call dein#install()
+endif
+
+" シンタックス
+syntax on
+
+" Rictyフォントpowerline版
+set guifont=Ricty\ for\ Powerline\ 12
+" 文字コード
+set encoding=utf-8
+scriptencoding utf-8
+
+"---------------------------------------------------------------------------
+" Encoding:
+"
+
+"---------------------------------------------------------------------------
+" Search:
+"
+
+" 選択箇所をハイライト"
+set hlsearch
+
+"---------------------------------------------------------------------------
+" Edit:
+"
+
+" スワップファイルを作成しない
 set noswapfile
-"ヤンクでクリップボードにコピー
-set clipboard=unnamed,autoselect
-"矢印キーを禁止する
-map <Up> <Nop>
-map <Down> <Nop>
-map <Left> <Nop>
-map <Right> <Nop>
+
+" アンドゥファイルを作成しない
+" set noundofile
+
+" バックアップファイルを作成しない
+" set nobackup
+
+" viminfoファイルを作成しない
+" set viminfo=
+
+"---------------------------------------------------------------------------
+" View:
+"
+
+" カラースキーマ
+colorscheme atom-dark-256
+
+" 行番号表示
+set number
+
+"不可視文字の文字の可視化
+set list
+set listchars=tab:»-,trail:-,eol:¬,extends:»,precedes:«,nbsp:%
+
+" shiftwidth を設定することが可能に
+set smarttab
+" TABキーを押した際にスペースを入れる
+set expandtab
+" TABにいくつの空白を設定するか
+set tabstop=4
+" 自動インデントの際に用いられる各ステップの幅"
+set shiftwidth=4
+
+" ステータスラインを常時表示
+set laststatus=2
+
+" 必要なときだけカーソルラインを表示
+hi clear CursorLine
+augroup vimrc-auto-cursorline
+  autocmd!
+  autocmd CursorMoved,CursorMovedI * call s:auto_cursorline('CursorMoved')
+  autocmd CursorHold,CursorHoldI * call s:auto_cursorline('CursorHold')
+  autocmd WinEnter * call s:auto_cursorline('WinEnter')
+  autocmd WinLeave * call s:auto_cursorline('WinLeave')
+  setlocal cursorline
+  hi clear CursorLine
+  let s:cursorline_lock = 0
+  function! s:auto_cursorline(event)
+    if a:event ==# 'WinEnter'
+      setlocal cursorline
+      hi CursorLine term=underline cterm=underline guibg=Grey90
+      let s:cursorline_lock = 2
+    elseif a:event ==# 'WinLeave'
+      setlocal nocursorline
+      hi clear CursorLine
+    elseif a:event ==# 'CursorMoved'
+      if s:cursorline_lock
+        if 1 < s:cursorline_lock
+          let s:cursorline_lock = 1
+        else
+          hi clear CursorLine
+          let s:cursorline_lock = 0
+        endif
+      endif
+    elseif a:event ==# 'CursorHold'
+      hi CursorLine term=underline cterm=underline guibg=Grey90
+      let s:cursorline_lock = 1
+    endif
+  endfunction
+augroup END
+
+" ウィンドウの境界線の設定
+set fillchars+=vert:\⎢
+hi! VertSplit ctermfg=235 ctermbg=235 term=NONE
+
+"---------------------------------------------------------------------------
+" FileType:
+"
+
+"---------------------------------------------------------------------------
+" Mappings:
+"
+
+" ノーマルモードへの移行を＜Ctrl+j＞で行う
+inoremap <C-j> <esc>
+vnoremap <C-j> <esc>
+
+" 選択したワードをアスタリスクで検索"
+vnoremap * "zy:let @/ = @z<CR>n
+
+" ESCを二回押すことでハイライトを消す
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
+
+" 矢印キーを禁止する
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
-"delete が効かないときの設定
-set backspace=indent,eol,start
-"undoの永続化
-set undofile
-set noundofile
 
-"** 文字設定 **
-"Rictyフォントpowerline版
-set guifont=Ricty\ for\ Powerline\ 12
-" 文字コード
-scriptencoding utf-8
-set encoding=utf-8
-" TABキーを押した際にタブ文字の代わりにスペースを入れる
-set smarttab
-set expandtab
-set tabstop=4
-set shiftwidth=4
-" indentLine の文字を変更
-" let g:indentLine_char = '|'
-" let g:indentLine_char = '│'
-let g:indentLine_char = '⁚'
-" let g:indentLine_char = '⁝'
-" let g:indentLine_char = '◗'
-let g:indentLine_color_term = 239
-" 括弧系閉じ補完
+" 括弧の補完
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
 inoremap ( ()<LEFT>
@@ -52,32 +179,32 @@ vnoremap [ "zdi^V[<C-R>z]<ESC>
 vnoremap ( "zdi^V(<C-R>z)<ESC>
 vnoremap " "zdi^V"<C-R>z^V"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>
-" 挿入モードを出る時，現在の IME の状態を保存し，IME をオフにする．（Gvimのみ）
-set imdisable
-"smartchr
-inoremap <buffer> <expr> = smartchr#loop('=', ' = ', ' == ')
-inoremap <buffer> <expr> <S-=> smartchr#loop('+', ' + ')
-inoremap <buffer> <expr> - smartchr#loop('-', ' - ')
-inoremap <buffer> <expr> , smartchr#loop(',', ', ')
-inoremap <buffer> <expr> . smartchr#loop('.', '<%=  %>', '<%  %>')
 
+"---------------------------------------------------------------------------
+" Commands:
+"
 
-"** 表示設定 **
-"行番号表示
-set number
-"選択箇所をハイライト"
-set hlsearch
-"隠しファイルをデフォルトで表示させる
-let NERDTreeShowHidden = 1
-"<C-e>でNERDTreeをオンオフ。いつでもどこでも。
-nmap <silent> <C-e>      :NERDTreeToggle<CR>
-vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
-omap <silent> <C-e>      :NERDTreeToggle<CR>
-" NERDTreeの自動起動
-" ファイル指定で開かれた場合はNERDTreeは表示しない
-" if !argc()
-    " autocmd vimenter * NERDTree|normal gg3j
-" endif
+" delete が効かないときの設定
+set backspace=indent,eol,start
+
+"---------------------------------------------------------------------------
+" Platform:
+"
+
+" 256色
+set t_Co=256
+
+" クリップボード
+if has('nvim')
+  set clipboard+=unnamedplus
+else
+  set clipboard=unnamed,autoselect
+endif
+
+"---------------------------------------------------------------------------
+" Plugin:
+"
+" NERDTree
 " ディレクトリ表示記号
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '❐'
@@ -85,451 +212,65 @@ let g:NERDTreeDirArrowCollapsible = '▿'
 " 起動時にブックマークを表示
 let g:NERDTreeShowBookmarks=1
 " NERDTreeを起動時に表示
-let g:nerdtree_tabs_open_on_gui_startup=1
-let g:nerdtree_tabs_open_on_console_startup=1
+" let g:nerdtree_tabs_open_on_gui_startup=1
+" let g:nerdtree_tabs_open_on_console_startup=1
 let NERDTreeWinSize=24
 " 起動時にディレクトリならNERDTree、ファイルならファイルにフォーカスをあてる
 let g:nerdtree_tabs_smart_startup_focus=1
 " 新規タブを開いた時にもNERDTreeを表示する
 let g:nerdtree_tabs_open_on_new_tab=1
-"エディタウィンドウの末尾から2行目にステータスラインを常時表示
-set laststatus=2
-"screen を 256色対応で
-set t_Co=256
-"不可視文字の文字の可視化
-set list
-set listchars=tab:»-,trail:⋯,eol:¬,extends:»,precedes:«,nbsp:%
-"folding 設定
-" set foldmethod=indent
-" set foldnestmax=10
-" set foldlevel=1
-"シンタックス
-syntax on
-" 初期状態はcursorlineを表示しない
-" 以下の一行は必ずcolorschemeの設定後に追加すること
-hi clear CursorLine
-" 'cursorline' を必要な時にだけ有効にする
-" http://d.hatena.ne.jp/thinca/20090530/1243615055
-" を少し改造、number の highlight は常に有効にする
-augroup vimrc-auto-cursorline
-  autocmd!
-  autocmd CursorMoved,CursorMovedI * call s:auto_cursorline('CursorMoved')
-  autocmd CursorHold,CursorHoldI * call s:auto_cursorline('CursorHold')
-  autocmd WinEnter * call s:auto_cursorline('WinEnter')
-  autocmd WinLeave * call s:auto_cursorline('WinLeave')
+" <C-e>でNERDTreeをオンオフ
+nmap <silent> <C-e>      :NERDTreeToggle<CR>
+vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+omap <silent> <C-e>      :NERDTreeToggle<CR>
+"隠しファイルをデフォルトで表示させる
+let NERDTreeShowHidden = 1
 
-  setlocal cursorline
-  hi clear CursorLine
+" indentLine
+" 文字を変更
+let g:indentLine_char = '⁚'
+" 色の変更
+let g:indentLine_color_term = 239
 
-  let s:cursorline_lock = 0
-  function! s:auto_cursorline(event)
-    if a:event ==# 'WinEnter'
-      setlocal cursorline
-      hi CursorLine term=underline cterm=underline guibg=Grey90 " ADD
-      let s:cursorline_lock = 2
-    elseif a:event ==# 'WinLeave'
-      setlocal nocursorline
-      hi clear CursorLine " ADD
-    elseif a:event ==# 'CursorMoved'
-      if s:cursorline_lock
-        if 1 < s:cursorline_lock
-          let s:cursorline_lock = 1
-        else
-          " setlocal nocursorline
-          hi clear CursorLine " ADD
-          let s:cursorline_lock = 0
-        endif
-      endif
-    elseif a:event ==# 'CursorHold'
-      " setlocal cursorline
-      hi CursorLine term=underline cterm=underline guibg=Grey90 " ADD
-      let s:cursorline_lock = 1
-    endif
-  endfunction
-augroup END
-" 関数一覧表示
-" set tags = tags
-let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
-let Tlist_Show_One_File = 1
-let Tlist_Use_Right_Window = 1
-let Tlist_Exit_OnlyWindow = 1
-" \lでtaglistウインドウを開いたり閉じたり出来るショートカット
-map <silent> <leader>l :TlistToggle<CR>
+" vim-trailing-whitespace
+" 保存時に行末の空白を削除
+autocmd BufWritePre * :FixWhitespace
 
+" neosnippet
+" snippetの展開
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
 
-"** プリンタ設定 **
-"行番号の表示、余白
-set printoptions=number:y,left:5pc
-"プリント時のフォント
-set printfont=Ricty\ for\ Powerline\ 12
-
-
-
-"パワーラインのスキーマ
-let g:lightline = {
-        \ 'colorscheme': 'wombat',
-        \ 'mode_map': {'c': 'NORMAL'},
-        \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
-        \ },
-        \ 'component': {
-        \   'readonly': '%{&readonly?"x":""}',
-        \ },
-        \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-        \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
-        \ 'component_function': {
-        \   'modified': 'MyModified',
-        \   'readonly': 'MyReadonly',
-        \   'fugitive': 'MyFugitive',
-        \   'filename': 'MyFilename',
-        \   'fileformat': 'MyFileformat',
-        \   'filetype': 'MyFiletype',
-        \   'fileencoding': 'MyFileencoding',
-        \   'mode': 'MyMode'
-        \ }
-        \ }
-"パワーラインのvimfilerのパス表示
-function! MyModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! MyReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
-endfunction
-
-function! MyFilename()
-  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \  &ft == 'unite' ? unite#get_status_string() :
-        \  &ft == 'vimshell' ? vimshell#get_status_string() :
-        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-        \ ('' != MyModified() ? ' ' . MyModified() : '')
-endfunction
-
-function! MyFugitive()
-  try
-    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-      return fugitive#head()
-    endif
-  catch
-  endtry
-  return ''
-endfunction
-
-function! MyFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! MyFileencoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! MyMode()
-  return winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
-
-"** カラースキーマ設定 (スキーマはダウンロードしてくる)**
-" let g:molokai_original=1
-" colorscheme lucius
-" colorscheme espresso
-" colorscheme kalisi
-" colorscheme zenburn
-colorscheme atom-dark-256
-" colorscheme onedark
-" colorscheme molokai
-" set background=dark
-" set background=light
-
-"""""""""""""""""""""""""""""
-" Unit.vimの設定
-""""""""""""""""""""""""""""""
-" 入力モードで開始する
-let g:unite_enable_start_insert=1
-" バッファ一覧
-noremap <C-P> :Unite buffer<CR>
-" ファイル一覧
-noremap <C-N> :Unite -buffer-name=file file<CR>
-" 最近使ったファイルの一覧
-noremap <C-Z> :Unite file_mru<CR>
-" sourcesを「今開いているファイルのディレクトリ」とする
-noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
-" ウィンドウを分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-" ウィンドウを縦に分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-" ESCキーを2回押すと終了する
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-""""""""""""""""""""""""""""""
-
-
-
-"**プログラミング言語別設定**
-"===pythonの基本設定===
-" シンタックスをpep8で行う
-let g:syntastic_python_checkers = ["flake8"]
-
-"===phpの基本設定===
-let php_sql_query = 1
-let php_baselib = 1
-let php_htmlInStrings = 1
-let php_noShortTags = 1
-let php_parent_error_close = 1
-let php_folding = 1
-
-" dbがmysqlの場合
-let g:sql_type_default='mysql'
-
-"=====rubyの基本設定=====
-"Rsense
-let g:neocomplcache#sources#rsense#home_directory = '/opt/rsense-0.3'
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_max_list = 20
-let g:neocomplcache_manual_completion_start_length = 3
-let g:neocomplcache_enable_ignore_case = 1
-let g:neocomplcache_enable_smart_case = 1
-if !exists('g:neocomplcache_delimiter_patterns')
-    let g:neocomplcache_delimiter_patterns = {}
-endif
-let g:rsenseUseOmniFunc = 1
-
-"neocomplete
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-if !exists('g:neocomplete#force_omni_input_patterns')
-    let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
-
-"rubocop
-let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['ruby', 'python'] }
-let g:syntastic_ruby_checkers = ['rubocop']
-
-"def,endなどのカーソル移動
-if !exists('loaded_matchit')
-  " matchitを有効化
-  runtime macros/matchit.vim
-endif
-
-"=====Markdownの基本設定=====
-au BufRead,BufNewFile *.md set filetype=markdown
-
-"---------------------------
-" Start Neobundle Settings.
-"---------------------------
-" bundleで管理するディレクトリを指定
-set runtimepath+=~/.vim/bundle/neobundle.vim/
-
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" neobundle自体をneobundleで管理
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-
-" --------ここから追加のプラグイン---------
-
-" NERDTreeを設定
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'jistr/vim-nerdtree-tabs'
-
-" 自動の綴じカッコ
-"NeoBundle 'Townk/vim-autoclose'
-
-" powerlineの派生lightline
-NeoBundle 'itchyny/lightline.vim'
-
-" vimファイラ
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimproc'
-
-" html/CSS入力補助プラグイン.
-" 展開は<C-y>, のカンマ忘れに注意
-NeoBundle 'mattn/emmet-vim'
-
-" インデントをスペースで可視化
-NeoBundle 'Yggdroot/indentLine'
-
-" テキストオブジェクトを拡張するプラグイン
-"NeoBundle 'taichouchou2/surround.vim'
-
-" スニペット補完
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-
-" コード補完
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'marcus/rsense'
-NeoBundle 'supermomonga/neocomplete-rsense.vim'
-
-" シンタックスチェック(サーバなどの環境では特殊文字でおこられる)
-NeoBundle 'scrooloose/syntastic'
+" syntastic
+" 初期設定
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
+" pythonの文法チェック
+let g:syntastic_python_checkers = ["flake8"]
 
+" vim-smartchr
+" 連続入力設定
+inoremap <buffer> <expr> = smartchr#loop('=', ' = ', ' == ')
+inoremap <buffer> <expr> <S-=> smartchr#loop('+', ' + ')
+inoremap <buffer> <expr> - smartchr#loop('-', ' - ')
+inoremap <buffer> <expr> , smartchr#loop(',', ', ')
+inoremap <buffer> <expr> . smartchr#loop('.', '<%=  %>', '<%  %>')
 
-" ドキュメント参照
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'yuku-t/vim-ref-ri'
-
-
-" Plugin key-mappings.  " <C-k>でsnippetの展開
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-
-"自動的テンプレートの作成
-NeoBundle 'aperezdc/vim-template'
-
-"メソッド定義元へジャンプ
-NeoBundle 'szw/vim-tags'
-
-"python用自動補完プラグイン
-NeoBundle 'davidhalter/jedi-vim'
-
-"vim-latexプラグイン
-"NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
-"NeoBundle 'lervag/vim-latex'
-"
-"コメントアウトプラグイン
-NeoBundle 'tomtom/tcomment_vim'
-
-"set pasteモード自動化
-NeoBundle 'ConradIrwin/vim-bracketed-paste'
-
-"カラースキーム
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'croaker/mustang-vim'
-NeoBundle 'jeffreyiacono/vim-colors-wombat'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'vim-scripts/Lucius'
-NeoBundle 'vim-scripts/Zenburn'
-NeoBundle 'mrkn/mrkn256.vim'
-NeoBundle 'jpo/vim-railscasts-theme'
-NeoBundle 'therubymug/vim-pyte'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'raphamorim/lucario'
-NeoBundle 'vim-scripts/desertEx'
-
-" カラースキーム一覧表示に Unite.vim を使う
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'ujihisa/unite-colorscheme'
-
-" Unite.vimで最近使ったファイルを表示できるようにする
-NeoBundle 'Shougo/neomru.vim'
-
-" 行末の半角スペースを可視化
-NeoBundle 'bronson/vim-trailing-whitespace'
-autocmd BufWritePre * :FixWhitespace
-
-" 同じキーの複数回入力で入力補完
-NeoBundle 'kana/vim-smartchr'
-
-" Markdownプレビュー(:PrevimOpenコマンド)
-NeoBundle 'kannokanno/previm'
-
-" ブラウザ処理
-NeoBundle 'tyru/open-browser.vim'
-
-" Markdown拡張子の対応
-NeoBundle 'plasticboy/vim-markdown'
-
-" RailsにおけるERBファイルの補完
-NeoBundle 'tpope/vim-rails'
-
-" 任意の文字で囲うプラグイン
-NeoBundle 'tpope/vim-surround'
-
-" 連続コマンド入力プラグイン
-" NeoBundle 'kana/vim-submode'
-NeoBundle 'thinca/vim-submode'
-let s:bundle = neobundle#get("vim-submode")
-function! s:bundle.hooks.on_source(bundle)
-    " ウィンドウサイズの変更キーを簡易化する
-    " [C-w],[+]または、[C-w],[-]
-    call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
-    call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
-    call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
-    call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
-    call submode#map('winsize', 'n', '', '>', '<C-w>>')
-    call submode#map('winsize', 'n', '', '<', '<C-w><')
-    call submode#map('winsize', 'n', '', '+', '<C-w>+')
-    call submode#map('winsize', 'n', '', '-', '<C-w>-')
-    " タブ移動のキーを簡易化する
-    " [gt]または[gT]
-    call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
-    call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
-    call submode#map('changetab', 'n', '', 't', 'gt')
-    call submode#map('changetab', 'n', '', 'T', 'gT')
-endfunction
-
-" Railsアプリ内でvim上でdbのクエリ実行
-NeoBundle 'dbext.vim'
-
-" CakePHPでのファイル移動
-NeoBundle 'violetyk/cake.vim'
-
-" pythonのコーディング規約チェック
-NeoBundle "andviro/flake8-vim"
-let g:PyFlakeOnWrite = 1
-let g:PyFlakeCheckers = 'pep8'
-
-" pep8基準のインデント
-NeoBundle "hynek/vim-python-pep8-indent"
-
-" :Tlist
-NeoBundle 'taglist.vim'
-
-
-" open-browser (カーソルの下にある単語をgxで調べてくれる)
-NeoBundle 'tyru/open-browser.vim'
-let g:netrw_nogx = 1 " disable netrw's gx mapping.
+" open-browser.vim
+let g:netrw_nogx = 1
 nmap gx <Plug>(openbrowser-smart-search)
 
-" dash.vim (カーソルの下にあるプログラムの単語を<Leader>d(Leaderはデフォルトだと\)でDashで調べてくれる)
-NeoBundle 'rizzatti/dash.vim'
+" dash.vim
 nmap <Leader>d <Plug>DashSearch
 
-" Gitを便利に使う
-NeoBundle 'tpope/vim-fugitive'
-" grep検索の実行後にQuickFix Listを表示する
-autocmd QuickFixCmdPost *grep* cwindow
-" ステータス行に現在のgitブランチを表示する
-set statusline+=%{fugitive#statusline()}
 
-" sublimeライクなminimapの表示
-NeoBundle 'severin-lemaignan/vim-minimap'
-let g:minimap_highlight='Visual'
-" --------ここまで追加のプラグイン---------
+"---------------------------------------------------------------------------
+" Others:
+"
 
-
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" 追加つすときの確認をするかどうか
-NeoBundleCheck
-
-"-------------------------
-" End Neobundle Settings.
-"-------------------------
-
-
-
-"-------------------------
-" Install.
-"-------------------------
-"$ mkdir -p ~/.vim/bundle
-"$ git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-
-
+" プリント時の行番号の表示、余白
+set printoptions=number:y,left:5pc
+" プリント時のフォント
+set printfont=Ricty\ for\ Powerline\ 12
