@@ -79,6 +79,9 @@ set noswapfile
 " View:
 "
 
+" 256色
+set t_Co=256
+
 " 起動時メッセージを表示しない
 set shortmess& shortmess+=I
 
@@ -203,14 +206,23 @@ set backspace=indent,eol,start
 " Platform:
 "
 
-" 256色
-set t_Co=256
-
 " クリップボード
 if has('nvim')
   set clipboard+=unnamedplus
 else
   set clipboard=unnamed,autoselect
+endif
+
+" マウス
+if has('mouse')
+  set mouse=a
+  if has('mouse_sgr')
+    set ttymouse=sgr
+  elseif v:version > 703 || v:version is 703 && has('patch632')
+    set ttymouse=sgr
+  else
+    set ttymouse=xterm2
+  endif
 endif
 
 "---------------------------------------------------------------------------
@@ -224,7 +236,6 @@ let g:NERDTreeDirArrowCollapsible = '▿'
 " 起動時にブックマークを表示
 let g:NERDTreeShowBookmarks=1
 " NERDTreeを起動時に表示
-" let g:nerdtree_tabs_open_on_gui_startup=1
 " let g:nerdtree_tabs_open_on_console_startup=1
 let NERDTreeWinSize=24
 " 起動時にディレクトリならNERDTree、ファイルならファイルにフォーカスをあてる
