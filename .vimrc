@@ -42,6 +42,9 @@ endif
 " シンタックス
 syntax on
 
+" filetypeプラグインによるindentをonにする
+filetype plugin indent on
+
 " Rictyフォントpowerline版
 set guifont=Ricty\ for\ Powerline\ 12
 " 文字コード
@@ -228,6 +231,7 @@ endif
 "---------------------------------------------------------------------------
 " Plugin:
 "
+
 " NERDTree
 " ディレクトリ表示記号
 let g:NERDTreeDirArrows = 1
@@ -264,6 +268,11 @@ autocmd BufWritePre * :FixWhitespace
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 
+" neocomplete
+" 起動
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+
 " syntastic
 " 初期設定
 let g:syntastic_enable_signs=1
@@ -288,6 +297,9 @@ nmap gx <Plug>(openbrowser-smart-search)
 " dash.vim
 nmap <Leader>d <Plug>DashSearch
 
+" lightline.vim
+let g:lightline = {}
+let g:lightline.colorscheme = 'atom'
 
 "---------------------------------------------------------------------------
 " Others:
