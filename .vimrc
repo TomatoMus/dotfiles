@@ -96,7 +96,8 @@ set number
 
 "不可視文字の文字の可視化
 set list
-set listchars=tab:»-,trail:-,eol:¬,extends:»,precedes:«,nbsp:%
+" set listchars=tab:»-,trail:-,eol:¬,extends:»,precedes:«,nbsp:%
+set listchars=tab:»-,trail:.,eol:¬,extends:»,precedes:«,nbsp:%
 
 " shiftwidth を設定することが可能に
 set smarttab
@@ -156,6 +157,12 @@ hi! NonText ctermfg=234 ctermbg=234 term=NONE
 set textwidth=80
 set colorcolumn=+1
 let &colorcolumn="80,".join(range(120,999),",")
+
+" iTerm2でtmuxを使っている時にインサートモードでのカーソルの形状をかえる
+if $TERM_PROGRAM =~ "iTerm"
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+endif
 
 
 "---------------------------------------------------------------------------
