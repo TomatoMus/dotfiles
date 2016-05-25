@@ -46,7 +46,7 @@ syntax on
 filetype plugin indent on
 
 " Rictyフォントpowerline版
-set guifont=Ricty\ for\ Powerline\ 12
+set guifont=Ricty\ for\ Powerline\ 14
 " 文字コード
 set encoding=utf-8
 scriptencoding utf-8
@@ -61,6 +61,15 @@ scriptencoding utf-8
 
 " 選択箇所をハイライト"
 set hlsearch
+
+" インクリメンタルサーチを行う
+set incsearch
+
+" 大文字小文字を区別しない
+set ignorecase
+
+" 大文字があるときは区別
+set smartcase
 
 "---------------------------------------------------------------------------
 " Edit:
@@ -91,13 +100,16 @@ set shortmess& shortmess+=I
 " カラースキーマ
 colorscheme atom-dark-256
 
-" 行番号表示
+" 絶対行番号表示
 set number
+
+" 相対行番号表示
+set relativenumber
 
 "不可視文字の文字の可視化
 set list
 " set listchars=tab:»-,trail:-,eol:¬,extends:»,precedes:«,nbsp:%
-set listchars=tab:»-,trail:.,eol:¬,extends:»,precedes:«,nbsp:%
+set listchars=tab:»-,trail:_,eol:¬,extends:»,precedes:«,nbsp:%
 
 " shiftwidth を設定することが可能に
 set smarttab
@@ -110,6 +122,9 @@ set shiftwidth=4
 
 " ステータスラインを常時表示
 set laststatus=2
+
+" デフォルトのモードステータスの非表示
+set noshowmode
 
 " 必要なときだけカーソルラインを表示
 hi clear CursorLine
@@ -204,6 +219,9 @@ vnoremap [ "zdi^V[<C-R>z]<ESC>
 vnoremap ( "zdi^V(<C-R>z)<ESC>
 vnoremap " "zdi^V"<C-R>z^V"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>
+
+" F3で行番号の絶対行数/相対行数の変更"
+nnoremap <F3> :<C-u>setlocal relativenumber!<CR>
 
 "---------------------------------------------------------------------------
 " Commands:
@@ -305,8 +323,8 @@ nmap gx <Plug>(openbrowser-smart-search)
 nmap <Leader>d <Plug>DashSearch
 
 " lightline.vim
-let g:lightline = {}
-let g:lightline.colorscheme = 'atom'
+" let g:lightline = {}
+" let g:lightline.colorscheme = 'atom'
 
 "---------------------------------------------------------------------------
 " Others:
