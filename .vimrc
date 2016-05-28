@@ -47,6 +47,8 @@ filetype plugin indent on
 
 " Rictyフォントpowerline版
 set guifont=Ricty\ for\ Powerline\ 14
+" set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h14
+
 " 文字コード
 set encoding=utf-8
 scriptencoding utf-8
@@ -108,8 +110,11 @@ set relativenumber
 
 "不可視文字の文字の可視化
 set list
-" set listchars=tab:»-,trail:-,eol:¬,extends:»,precedes:«,nbsp:%
-set listchars=tab:»-,trail:_,eol:¬,extends:»,precedes:«,nbsp:%
+" set listchars=tab:»-,trail:_,eol:¬,extends:»,precedes:«,nbsp:%
+set listchars=tab:»-,trail:_,eol:¬,extends:»,precedes:«
+
+" 特殊記号の2byte割当
+set ambiwidth=double
 
 " shiftwidth を設定することが可能に
 set smarttab
@@ -260,8 +265,10 @@ endif
 " NERDTree
 " ディレクトリ表示記号
 let g:NERDTreeDirArrows = 1
-let g:NERDTreeDirArrowExpandable = '❐'
-let g:NERDTreeDirArrowCollapsible = '▿'
+" let g:NERDTreeDirArrowExpandable = '❐'
+let g:NERDTreeDirArrowExpandable = ''
+" let g:NERDTreeDirArrowCollapsible = '▿'
+let g:NERDTreeDirArrowCollapsible = ''
 " 起動時にブックマークを表示
 let g:NERDTreeShowBookmarks=1
 " NERDTreeを起動時に表示
@@ -325,6 +332,46 @@ nmap <Leader>d <Plug>DashSearch
 " lightline.vim
 " let g:lightline = {}
 " let g:lightline.colorscheme = 'atom'
+
+" vim-devicons
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
+" ディレクトリアイコン
+" let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+" let g:DevIconsEnableFoldersOpenClose = 1
+" let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
+" let g:DevIconsDefaultFolderOpenSymbol = ''
+" ファイル別アイコン
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
+" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['html'] = ''
+" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['css'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['swift'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['txt'] = ''
+" ファイル別アイコンカラー
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+autocmd filetype nerdtree highlight html_icon ctermbg=none ctermfg=red
+autocmd filetype nerdtree syn match html_icon ## containedin=NERDTreeFile,html
+autocmd filetype nerdtree highlight css_icon ctermbg=none ctermfg=blue
+autocmd filetype nerdtree syn match css_icon ## containedin=NERDTreeFile,css
+autocmd filetype nerdtree highlight js_icon ctermbg=none ctermfg=yellow
+autocmd filetype nerdtree syn match js_icon ## containedin=NERDTreeFile,js
+autocmd filetype nerdtree highlight db_icon ctermbg=none ctermfg=yellow
+autocmd filetype nerdtree syn match db_icon ## containedin=NERDTreeFile,db
+autocmd filetype nerdtree highlight python_icon ctermbg=none ctermfg=blue
+autocmd filetype nerdtree syn match python_icon ## containedin=NERDTreeFile,py
+autocmd filetype nerdtree highlight php_icon ctermbg=none ctermfg=cyan
+autocmd filetype nerdtree syn match php_icon ## containedin=NERDTreeFile,php
+autocmd filetype nerdtree highlight ruby_icon ctermbg=none ctermfg=red
+autocmd filetype nerdtree syn match ruby_icon ## containedin=NERDTreeFile,rb
+autocmd filetype nerdtree highlight swift_icon ctermbg=none ctermfg=magenta
+autocmd filetype nerdtree syn match swift_icon ## containedin=NERDTreeFile,swift
+autocmd filetype nerdtree highlight md_icon ctermbg=none ctermfg=magenta
+autocmd filetype nerdtree syn match md_icon ## containedin=NERDTreeFile,md
+autocmd filetype nerdtree highlight sh_icon ctermbg=none ctermfg=green
+autocmd filetype nerdtree syn match sh_icon ## containedin=NERDTreeFile,sh
 
 "---------------------------------------------------------------------------
 " Others:
