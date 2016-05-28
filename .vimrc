@@ -332,6 +332,10 @@ nmap <Leader>d <Plug>DashSearch
 " lightline.vim
 " let g:lightline = {}
 " let g:lightline.colorscheme = 'atom'
+let g:lightline = {
+    \ 'separator': { 'left': '', 'right': '' },
+    \ 'subseparator': { 'left': '', 'right': '' }
+    \ }
 
 " vim-devicons
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
@@ -372,6 +376,21 @@ autocmd filetype nerdtree highlight md_icon ctermbg=none ctermfg=magenta
 autocmd filetype nerdtree syn match md_icon ## containedin=NERDTreeFile,md
 autocmd filetype nerdtree highlight sh_icon ctermbg=none ctermfg=green
 autocmd filetype nerdtree syn match sh_icon ## containedin=NERDTreeFile,sh
+
+" vim-anzu
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
+" nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+" statusline
+set statusline=%{anzu#search_status()}
+augroup vim-anzu
+" 一定時間キー入力がないとき、ウインドウを移動したとき、タブを移動したときに
+" 検索ヒット数の表示を消去する
+    autocmd!
+    autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
+augroup END
 
 "---------------------------------------------------------------------------
 " Others:
