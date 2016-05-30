@@ -74,6 +74,10 @@ repo = 'ryanoasis/vim-devicons'
 [[plugins]]
 repo = 'osyo-manga/vim-anzu'
 
+# Git wrapper
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
 #---------------------------------------------------------------------------
 # Python:
 #
