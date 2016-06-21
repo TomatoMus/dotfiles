@@ -114,7 +114,7 @@ set list
 set listchars=tab:»-,trail:_,eol:¬,extends:»,precedes:«
 
 " 特殊記号の2byte割当
-set ambiwidth=double
+" set ambiwidth=double
 
 " shiftwidth を設定することが可能に
 set smarttab
@@ -343,7 +343,7 @@ let g:lightline = {
     \   'modified': 'LightLineModified',
     \   'filename': 'LightLineFilename'
     \ },
-    \ 'separator': { 'left': '', 'right': '' },
+    \ 'separator': { 'left': '', 'right': '' },
     \ 'subseparator': { 'left': '', 'right': '' }
     \ }
 " ファイルの変更状態

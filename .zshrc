@@ -244,3 +244,5 @@ eval "$(rbenv init -)"
 
 # neovim
 export XDG_CONFIG_HOME=$HOME/.config
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
