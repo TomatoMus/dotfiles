@@ -106,6 +106,10 @@ hook_source = '''
 repo = "hynek/vim-python-pep8-indent"¬
 on_ft = 'python'
 
+# Activate the versions and the virtualenvs of pyenv within a live VIM session
+[[plugins]]
+repo = 'lambdalisue/vim-pyenv'
+
 #---------------------------------------------------------------------------
 # HTML5+CSS3:
 #
