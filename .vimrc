@@ -114,7 +114,7 @@ set list
 set listchars=tab:»-,trail:_,eol:¬,extends:»,precedes:«
 
 " 特殊記号の2byte割当
-set ambiwidth=double
+" set ambiwidth=double
 
 " shiftwidth を設定することが可能に
 set smarttab
@@ -343,7 +343,7 @@ let g:lightline = {
     \   'modified': 'LightLineModified',
     \   'filename': 'LightLineFilename'
     \ },
-    \ 'separator': { 'left': '', 'right': '' },
+    \ 'separator': { 'left': '', 'right': '' },
     \ 'subseparator': { 'left': '', 'right': '' }
     \ }
 " ファイルの変更状態
@@ -438,6 +438,13 @@ augroup vim-anzu
     autocmd!
     autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
 augroup END
+
+" evervim
+let g:evervim_devtoken='S=s105:U=b313cd:E=15cd466bea4:C=1557cb59190:P=1cd:A=en-devtoken:V=2:H=71e8d95e31a51e6c7a67364c44fc3e0c'
+nnoremap <Leader>l :EvervimNotebookList<CR>
+nnoremap <Leader>s :EvervimSearchByQuery<Space>
+nnoremap <Leader>c :EvervimCreateNote<CR>
+nnoremap <Leader>t :EvervimListTags<CR>
 
 "---------------------------------------------------------------------------
 " Others:
