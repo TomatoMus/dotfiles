@@ -439,6 +439,13 @@ augroup vim-anzu
     autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
 augroup END
 
+" evervim
+let g:evervim_devtoken='S=s105:U=b313cd:E=15cd466bea4:C=1557cb59190:P=1cd:A=en-devtoken:V=2:H=71e8d95e31a51e6c7a67364c44fc3e0c'
+nnoremap <Leader>l :EvervimNotebookList<CR>
+nnoremap <Leader>s :EvervimSearchByQuery<Space>
+nnoremap <Leader>c :EvervimCreateNote<CR>
+nnoremap <Leader>t :EvervimListTags<CR>
+
 "---------------------------------------------------------------------------
 " Others:
 "

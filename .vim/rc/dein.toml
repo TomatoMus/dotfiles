@@ -78,6 +78,10 @@ repo = 'osyo-manga/vim-anzu'
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
+# edit evernote on vim.
+[[plugins]]
+repo = 'kakkyz81/evervim'
+
 #---------------------------------------------------------------------------
 # Python:
 #
