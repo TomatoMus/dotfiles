@@ -113,8 +113,8 @@ set relativenumber
 
 "不可視文字の文字の可視化
 set list
-" set listchars=tab:»-,trail:_,eol:¬,extends:»,precedes:«,nbsp:%
-set listchars=tab:»-,trail:■,eol:¬,extends:»,precedes:«
+" set listchars=tab:»-,trail:˽·_,eol:¬,extends:»,precedes:«,nbsp:%
+set listchars=tab:▸·,trail:·,eol:¬,extends:»,precedes:«
 
 " 特殊記号の2byte割当
 " set ambiwidth=double
@@ -127,6 +127,9 @@ set expandtab
 set tabstop=4
 " 自動インデントの際に用いられる各ステップの幅"
 set shiftwidth=4
+
+" 余分な空白の色
+highlight ExtraWhitespace ctermbg=blue guibg=#92C5F7
 
 " ステータスラインを常時表示
 set laststatus=2
@@ -148,7 +151,8 @@ augroup vimrc-auto-cursorline
   function! s:auto_cursorline(event)
     if a:event ==# 'WinEnter'
       setlocal cursorline
-      hi CursorLine term=underline cterm=underline guibg=Grey90
+      " hi CursorLine term=underline cterm=underline guibg=Grey90
+      hi CursorLine term=underline cterm=underline guibg=#242728
       let s:cursorline_lock = 2
     elseif a:event ==# 'WinLeave'
       setlocal nocursorline
@@ -172,7 +176,7 @@ augroup END
 
 " ウィンドウの境界線の設定
 set fillchars+=vert:\⎢
-hi! VertSplit ctermfg=235 ctermbg=235 term=NONE guifg=#1D1F21 guibg=#1D1F21
+hi! VertSplit ctermfg=235 ctermbg=235 term=NONE guifg=#242728 guibg=#242728
 
 " 初期起動時の空行のチルダの設定
 hi! NonText ctermfg=234 ctermbg=234 term=NONE guifg=#1D1F21 guibg=#1D1F21
@@ -293,11 +297,13 @@ let NERDTreeShowHidden = 1
 
 " indentLine
 " 文字を変更
-" let g:indentLine_char = '⁚'
-let g:indentLine_char = '︙'
+let g:indentLine_char = '⁚'
 " 色の変更
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#303435'
+"
+let g:indentLine_leadingSpaceChar = '·'
+let g:indentLine_leadingSpaceEnabled = 1
 
 " vim-trailing-whitespace
 " 保存時に行末の空白を削除
@@ -453,6 +459,9 @@ nnoremap <Leader>l :EvervimNotebookList<CR>
 nnoremap <Leader>s :EvervimSearchByQuery<Space>
 nnoremap <Leader>c :EvervimCreateNote<CR>
 nnoremap <Leader>t :EvervimListTags<CR>
+
+" vim-splash
+let g:splash#path = $HOME . '/.vim/splashes/start.txt'
 
 "---------------------------------------------------------------------------
 " Others:

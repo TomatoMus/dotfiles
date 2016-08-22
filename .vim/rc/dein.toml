@@ -82,6 +82,10 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'kakkyz81/evervim'
 
+# Changes the splash of Vim as you like.
+[[plugins]]
+repo = 'thinca/vim-splash'
+
 #---------------------------------------------------------------------------
 # Python:
 #
