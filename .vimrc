@@ -293,9 +293,11 @@ let NERDTreeShowHidden = 1
 
 " indentLine
 " 文字を変更
-let g:indentLine_char = '⁚'
+" let g:indentLine_char = '⁚'
+let g:indentLine_char = '︙'
 " 色の変更
 let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#303435'
 
 " vim-trailing-whitespace
 " 保存時に行末の空白を削除
