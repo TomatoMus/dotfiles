@@ -86,6 +86,9 @@ nnoremap <F3> :<C-u>setlocal relativenumber!<CR>
 " Commands:
 "
 
+" delete が効かないときの設定
+set backspace=indent,eol,start
+
 "---------------------------------------------------------------------------
 " Platform:
 "

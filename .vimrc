@@ -96,6 +96,9 @@ set noswapfile
 " 256色
 set t_Co=256
 
+" truecolor
+set termguicolors
+
 " 起動時メッセージを表示しない
 set shortmess& shortmess+=I
 
@@ -111,7 +114,7 @@ set relativenumber
 "不可視文字の文字の可視化
 set list
 " set listchars=tab:»-,trail:_,eol:¬,extends:»,precedes:«,nbsp:%
-set listchars=tab:»-,trail:_,eol:¬,extends:»,precedes:«
+set listchars=tab:»-,trail:■,eol:¬,extends:»,precedes:«
 
 " 特殊記号の2byte割当
 " set ambiwidth=double
@@ -160,7 +163,8 @@ augroup vimrc-auto-cursorline
         endif
       endif
     elseif a:event ==# 'CursorHold'
-      hi CursorLine term=underline cterm=underline guibg=Grey90
+      " hi CursorLine term=underline cterm=underline guibg=Grey90
+      hi CursorLine term=underline cterm=underline guibg=#242728
       let s:cursorline_lock = 1
     endif
   endfunction
@@ -168,14 +172,16 @@ augroup END
 
 " ウィンドウの境界線の設定
 set fillchars+=vert:\⎢
-hi! VertSplit ctermfg=235 ctermbg=235 term=NONE
+hi! VertSplit ctermfg=235 ctermbg=235 term=NONE guifg=#1D1F21 guibg=#1D1F21
 
 " 初期起動時の空行のチルダの設定
-hi! NonText ctermfg=234 ctermbg=234 term=NONE
+hi! NonText ctermfg=234 ctermbg=234 term=NONE guifg=#1D1F21 guibg=#1D1F21
+
 
 " Wrap Guide(80:warning, 120:danger)
 set textwidth=80
 set colorcolumn=+1
+hi ColorColumn guibg=#242728
 let &colorcolumn="80,".join(range(120,999),",")
 
 " iTerm2でtmuxを使っている時にインサートモードでのカーソルの形状をかえる
