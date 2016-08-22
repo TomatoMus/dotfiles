@@ -88,9 +88,10 @@ repo = 'kakkyz81/evervim'
 
 # Using the jedi autocompletion library
 [[plugins]]
-repo = 'davidhalter/jedi-vim'
-if = "!has('nvim')"
-on_ft = 'python'
+# repo = 'davidhalter/jedi-vim'
+# if = "!has('nvim')"
+# if = "!has('python3')"
+# on_ft = 'python'
 
 ## Pyflakes, Pep8 and mccabe code complexity checker
 [[plugins]]
