@@ -91,7 +91,7 @@ repo = 'thinca/vim-splash'
 #
 
 # Using the jedi autocompletion library
-[[plugins]]
+# [[plugins]]
 # repo = 'davidhalter/jedi-vim'
 # if = "!has('nvim')"
 # if = "!has('python3')"
