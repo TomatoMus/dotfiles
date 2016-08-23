@@ -300,10 +300,11 @@ let NERDTreeShowHidden = 1
 let g:indentLine_char = '⁚'
 " 色の変更
 let g:indentLine_color_term = 239
-let g:indentLine_color_gui = '#303435'
-"
-let g:indentLine_leadingSpaceChar = '·'
-let g:indentLine_leadingSpaceEnabled = 1
+" let g:indentLine_color_gui = '#303435'
+let g:indentLine_color_gui = '#60696B'
+" 横線
+" let g:indentLine_leadingSpaceChar = '·'
+" let g:indentLine_leadingSpaceEnabled = 1
 
 " vim-trailing-whitespace
 " 保存時に行末の空白を削除
@@ -399,6 +400,7 @@ function! LightLineFilename()
 endfunction
 
 " vim-devicons
+let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
 " ディレクトリアイコン
 " let g:WebDevIconsUnicodeDecorateFolderNodes = 1
