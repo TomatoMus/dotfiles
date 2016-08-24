@@ -13,7 +13,7 @@ alias up='cd ..'
 # phコマンドで意味表示
 # ZSH_THEME="wedisagree"
 ZSH_THEME="agnoster"
-#ZSH_THEME="avit"
+# ZSH_THEME="avit"
 # ZSH_THEME="theunraveler"
 
 # Uncomment the following line to use case-sensitive completion.
