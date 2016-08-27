@@ -97,6 +97,9 @@ set noswapfile
 " 256色
 set t_Co=256
 
+" 背景色
+" set background=dark
+
 " truecolor
 set termguicolors
 
@@ -105,12 +108,16 @@ set shortmess& shortmess+=I
 
 " カラースキーマ
 colorscheme atom-dark-256
+" colorscheme material-theme
 
 " 絶対行番号表示
 set number
 
 " 相対行番号表示
 set relativenumber
+
+" タブページを常に表示
+set showtabline=2
 
 "不可視文字の文字の可視化
 set list
@@ -238,6 +245,11 @@ vnoremap ' "zdi'<C-R>z'<ESC>
 
 " F3で行番号の絶対行数/相対行数の変更"
 nnoremap <F3> :<C-u>setlocal relativenumber!<CR>
+
+" タブ
+nnoremap st :<C-u>tabnew<CR>
+nnoremap sn gt
+nnoremap sp gT
 
 "---------------------------------------------------------------------------
 " Commands:

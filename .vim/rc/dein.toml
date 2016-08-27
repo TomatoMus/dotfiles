@@ -87,6 +87,22 @@ repo = 'kakkyz81/evervim'
 repo = 'thinca/vim-splash'
 
 #---------------------------------------------------------------------------
+# ColorScheme:
+#
+
+# Material theme for vim
+[[plugins]]
+repo = 'jdkanani/vim-material-theme'
+
+# A vim theme inspired by Atom's default dark theme
+[[plugins]]
+repo = 'gosukiwi/vim-atom-dark'
+
+# Monokai color scheme for Vim converted from Textmate theme
+[[plugins]]
+repo = 'sickill/vim-monokai'
+
+#---------------------------------------------------------------------------
 # Python:
 #
 
