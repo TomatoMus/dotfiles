@@ -369,11 +369,21 @@ let g:lightline = {
     \   'fugitive': 'LightLineFugitive',
     \   'readonly': 'LightLineReadonly',
     \   'modified': 'LightLineModified',
-    \   'filename': 'LightLineFilename'
+    \   'filename': 'LightLineFilename',
+    \   'filetype': 'MyFiletype',
+    \   'fileformat': 'MyFileformat'
     \ },
     \ 'separator': { 'left': '', 'right': '' },
-    \ 'subseparator': { 'left': '', 'right': '' }
+    \ 'subseparator': { 'left': '', 'right': '' },
+    \ 'tabline_separator': { 'left': '', 'right': '' }
     \ }
+" lightlineでdeviconを表示
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+function! MyFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
 " ファイルの変更状態
 function! LightLineModified()
   if &filetype == "help"
