@@ -486,3 +486,4 @@ let g:splash#path = $HOME . '/.vim/splashes/start.txt'
 set printoptions=number:y,left:5pc
 " プリント時のフォント
 set printfont=Ricty\ for\ Powerline\ 12
+
