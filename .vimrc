@@ -184,7 +184,7 @@ augroup END
 
 " ウィンドウの境界線の設定
 set fillchars+=vert:\⎢
-hi! VertSplit ctermfg=235 ctermbg=235 term=NONE guifg=#242728 guibg=#242728
+hi! VertSplit ctermfg=235 ctermbg=235 term=NONE guifg=#1d1f21 guibg=#1d1f21
 
 " 初期起動時の空行のチルダの設定
 hi! NonText ctermfg=234 ctermbg=234 term=NONE guifg=#1D1F21 guibg=#1D1F21
@@ -270,14 +270,16 @@ else
 endif
 
 " マウス
-if has('mouse')
-  set mouse=a
-  if has('mouse_sgr')
-    set ttymouse=sgr
-  elseif v:version > 703 || v:version is 703 && has('patch632')
-    set ttymouse=sgr
-  else
-    set ttymouse=xterm2
+if !has('nvim')
+  if has('mouse')
+    set mouse=a
+    if has('mouse_sgr')
+      set ttymouse=sgr
+    elseif v:version > 703 || v:version is 703 && has('patch632')
+      set ttymouse=sgr
+    else
+      set ttymouse=xterm2
+    endif
   endif
 endif
 
