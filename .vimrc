@@ -196,6 +196,9 @@ set colorcolumn=+1
 hi ColorColumn guibg=#242728
 let &colorcolumn="80,".join(range(120,999),",")
 
+" 自動改行OFF
+set formatoptions=q
+
 " iTerm2でtmuxを使っている時にインサートモードでのカーソルの形状をかえる
 if $TERM_PROGRAM =~ "iTerm"
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
@@ -377,7 +380,8 @@ let g:lightline = {
     \ },
     \ 'separator': { 'left': '', 'right': '' },
     \ 'subseparator': { 'left': '', 'right': '' },
-    \ 'tabline_separator': { 'left': '', 'right': '' }
+    \ 'tabline_separator': { 'left': '', 'right': '' },
+    \ 'tabline_subseparator': { 'left': '', 'right': '' }
     \ }
 " lightlineでdeviconを表示
 function! MyFiletype()
