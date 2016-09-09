@@ -86,6 +86,10 @@ repo = 'kakkyz81/evervim'
 [[plugins]]
 repo = 'thinca/vim-splash'
 
+# The interactive scratchpad for hackers.
+[[plugins]]
+repo = 'metakirby5/codi.vim'
+
 #---------------------------------------------------------------------------
 # ColorScheme:
 #
@@ -143,6 +147,10 @@ on_ft = 'html'
 # Add CSS3 syntax support
 [[plugins]]
 repo = 'hail2u/vim-css3-syntax'
+
+# Preview colours in source code
+[[plugins]]
+repo = 'ap/vim-css-color'
 
 #---------------------------------------------------------------------------
 # Javascript:
