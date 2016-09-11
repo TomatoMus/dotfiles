@@ -152,6 +152,10 @@ repo = 'hail2u/vim-css3-syntax'
 [[plugins]]
 repo = 'ap/vim-css-color'
 
+# emmet for vim
+[[plugins]]
+repo = 'mattn/emmet-vim'
+
 #---------------------------------------------------------------------------
 # Javascript:
 #
