@@ -101,12 +101,7 @@ set t_Co=256
 " set background=dark
 
 " truecolor
-if has('patch-7.4.1778')
-  set termguicolors
-endif
-if has('nvim')
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
+set termguicolors
 
 " 起動時メッセージを表示しない
 set shortmess& shortmess+=I
