@@ -109,6 +109,7 @@ set shortmess& shortmess+=I
 " カラースキーマ
 colorscheme atom-dark-256
 " colorscheme material-theme
+" colorscheme tender
 
 " 絶対行番号表示
 set number

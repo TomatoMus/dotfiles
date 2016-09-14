@@ -106,6 +106,10 @@ repo = 'gosukiwi/vim-atom-dark'
 [[plugins]]
 repo = 'sickill/vim-monokai'
 
+# A 24bit colorscheme for Vim, Airline and Lightline
+[[plugins]]
+repo = 'jacoborus/tender'
+
 #---------------------------------------------------------------------------
 # Python:
 #
