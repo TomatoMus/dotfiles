@@ -168,3 +168,11 @@ repo = 'mattn/emmet-vim'
 [[plugins]]
 repo = 'jelera/vim-javascript-syntax'
 on_ft = 'javascript'
+
+#---------------------------------------------------------------------------
+# LaTex:
+#
+
+# Enhanced LaTeX support for Vim
+[[plugins]]
+repo = 'vim-latex/vim-latex'
