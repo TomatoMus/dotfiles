@@ -173,6 +173,3 @@ on_ft = 'javascript'
 # LaTex:
 #
 
-# Enhanced LaTeX support for Vim
-[[plugins]]
-repo = 'vim-latex/vim-latex'
