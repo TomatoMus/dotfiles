@@ -90,6 +90,10 @@ repo = 'thinca/vim-splash'
 [[plugins]]
 repo = 'metakirby5/codi.vim'
 
+# Run commands quickly.
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+
 #---------------------------------------------------------------------------
 # ColorScheme:
 #
@@ -172,4 +176,9 @@ on_ft = 'javascript'
 #---------------------------------------------------------------------------
 # LaTex:
 #
+
+# A modern vim plugin for editing LaTeX files.
+[[plugins]]
+repo = 'lervag/vimtex'
+
 
