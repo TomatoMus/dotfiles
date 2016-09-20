@@ -6,6 +6,10 @@ repo = 'Shougo/dein.vim'
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
+# Run commands quickly.
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+
 # A tree explorer
 [[plugins]]
 repo = 'scrooloose/nerdtree'
@@ -79,8 +83,8 @@ repo = 'osyo-manga/vim-anzu'
 repo = 'tpope/vim-fugitive'
 
 # edit evernote on vim.
-[[plugins]]
-repo = 'kakkyz81/evervim'
+# [[plugins]]
+# repo = 'kakkyz81/evervim'
 
 # Changes the splash of Vim as you like.
 [[plugins]]
@@ -89,10 +93,6 @@ repo = 'thinca/vim-splash'
 # The interactive scratchpad for hackers.
 [[plugins]]
 repo = 'metakirby5/codi.vim'
-
-# Run commands quickly.
-[[plugins]]
-repo = 'thinca/vim-quickrun'
 
 #---------------------------------------------------------------------------
 # ColorScheme:

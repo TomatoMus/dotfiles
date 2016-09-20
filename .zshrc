@@ -3,6 +3,8 @@
 export ZSH=/Users/matsumotoyasuyuki/.oh-my-zsh
 #[alias]
 alias vi='vim'
+# alias vi='nvim'
+alias emacs="/usr/local/bin/emacs"
 alias mvi="mvim --remote-tab-silent"
 alias up='cd ..'
 

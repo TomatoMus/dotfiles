@@ -138,7 +138,10 @@ set tabstop=4
 set shiftwidth=4
 
 " 余分な空白の色
+" atom
 highlight ExtraWhitespace ctermbg=blue guibg=#92C5F7
+" tender
+" highlight ExtraWhitespace ctermbg=blue guibg=#73cef4
 
 " ステータスラインを常時表示
 set laststatus=2
@@ -161,7 +164,10 @@ augroup vimrc-auto-cursorline
     if a:event ==# 'WinEnter'
       setlocal cursorline
       " hi CursorLine term=underline cterm=underline guibg=Grey90
+      " atom
       hi CursorLine term=underline cterm=underline guibg=#242728
+      " tender
+      " hi CursorLine term=underline cterm=underline guibg=#323232
       let s:cursorline_lock = 2
     elseif a:event ==# 'WinLeave'
       setlocal nocursorline
@@ -177,7 +183,10 @@ augroup vimrc-auto-cursorline
       endif
     elseif a:event ==# 'CursorHold'
       " hi CursorLine term=underline cterm=underline guibg=Grey90
+      " atom
       hi CursorLine term=underline cterm=underline guibg=#242728
+      " tender
+      " hi CursorLine term=underline cterm=underline guibg=#323232
       let s:cursorline_lock = 1
     endif
   endfunction
@@ -185,16 +194,26 @@ augroup END
 
 " ウィンドウの境界線の設定
 set fillchars+=vert:\⎢
+" atom
 hi! VertSplit ctermfg=235 ctermbg=235 term=NONE guifg=#1d1f21 guibg=#1d1f21
+" tender
+" hi! VertSplit ctermfg=235 ctermbg=235 term=NONE guifg=#282828 guibg=#282828
 
 " 初期起動時の空行のチルダの設定
+" atom
 hi! NonText ctermfg=234 ctermbg=234 term=NONE guifg=#1D1F21 guibg=#1D1F21
+" tender
+" hi! NonText ctermfg=235 ctermbg=235 term=NONE guifg=#282828 guibg=#282828
+
 
 
 " Wrap Guide(80:warning, 120:danger)
 set textwidth=80
 set colorcolumn=+1
+" atom
 hi ColorColumn guibg=#242728
+" tender
+" hi ColorColumn guibg=#323232
 let &colorcolumn="80,".join(range(120,999),",")
 
 " 自動改行OFF
@@ -343,7 +362,8 @@ let g:neocomplete#enable_smart_case = 1
 " 初期設定
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
-let g:syntastic_error_symbol = '✗'
+" let g:syntastic_error_symbol = '✗'
+let g:syntastic_error_symbol='⚑'
 let g:syntastic_warning_symbol = '⚠'
 " pythonの文法チェック
 let g:syntastic_python_checkers = ["flake8"]
@@ -364,8 +384,7 @@ nmap gx <Plug>(openbrowser-smart-search)
 nmap <Leader>d <Plug>DashSearch
 
 " lightline.vim
-" let g:lightline = {}
-" let g:lightline.colorscheme = 'atom'
+    " \ 'colorscheme': 'tender',
 let g:lightline = {
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
