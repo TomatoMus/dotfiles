@@ -109,13 +109,21 @@ set shortmess& shortmess+=I
 " カラースキーマ
 colorscheme atom-dark-256
 " colorscheme material-theme
-" colorscheme tender
+if has('nvim')
+  colorscheme tender
+endif
 
 " 絶対行番号表示
 set number
 
 " 相対行番号表示
 set relativenumber
+
+" 行番号背景
+hi LineNr guibg=#1D1F21
+if has('nvim')
+  hi LineNr guibg=#282828
+endif
 
 " タブページを常に表示
 set showtabline=2
@@ -140,8 +148,10 @@ set shiftwidth=4
 " 余分な空白の色
 " atom
 highlight ExtraWhitespace ctermbg=blue guibg=#92C5F7
-" tender
-" highlight ExtraWhitespace ctermbg=blue guibg=#73cef4
+if has('nvim')
+  " tender
+  highlight ExtraWhitespace ctermbg=blue guibg=#73cef4
+endif
 
 " ステータスラインを常時表示
 set laststatus=2
@@ -166,8 +176,10 @@ augroup vimrc-auto-cursorline
       " hi CursorLine term=underline cterm=underline guibg=Grey90
       " atom
       hi CursorLine term=underline cterm=underline guibg=#242728
+      if has('nvim')
       " tender
-      " hi CursorLine term=underline cterm=underline guibg=#323232
+        hi CursorLine term=underline cterm=underline guibg=#323232
+      endif
       let s:cursorline_lock = 2
     elseif a:event ==# 'WinLeave'
       setlocal nocursorline
@@ -185,8 +197,10 @@ augroup vimrc-auto-cursorline
       " hi CursorLine term=underline cterm=underline guibg=Grey90
       " atom
       hi CursorLine term=underline cterm=underline guibg=#242728
+      if has('nvim')
       " tender
-      " hi CursorLine term=underline cterm=underline guibg=#323232
+      hi CursorLine term=underline cterm=underline guibg=#323232
+      endif
       let s:cursorline_lock = 1
     endif
   endfunction
@@ -196,14 +210,18 @@ augroup END
 set fillchars+=vert:\⎢
 " atom
 hi! VertSplit ctermfg=235 ctermbg=235 term=NONE guifg=#1d1f21 guibg=#1d1f21
+if has('nvim')
 " tender
-" hi! VertSplit ctermfg=235 ctermbg=235 term=NONE guifg=#282828 guibg=#282828
+  hi! VertSplit ctermfg=235 ctermbg=235 term=NONE guifg=#282828 guibg=#282828
+endif
 
 " 初期起動時の空行のチルダの設定
 " atom
 hi! NonText ctermfg=234 ctermbg=234 term=NONE guifg=#1D1F21 guibg=#1D1F21
+if has('nvim')
 " tender
-" hi! NonText ctermfg=235 ctermbg=235 term=NONE guifg=#282828 guibg=#282828
+  hi! NonText ctermfg=235 ctermbg=235 term=NONE guifg=#282828 guibg=#282828
+endif
 
 
 
@@ -212,8 +230,10 @@ set textwidth=80
 set colorcolumn=+1
 " atom
 hi ColorColumn guibg=#242728
+if has('nvim')
 " tender
-" hi ColorColumn guibg=#323232
+  hi ColorColumn guibg=#323232
+endif
 let &colorcolumn="80,".join(range(120,999),",")
 
 " 自動改行OFF
@@ -223,6 +243,9 @@ set formatoptions=q
 if $TERM_PROGRAM =~ "iTerm"
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+endif
+if has('nvim')
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif
 
 
@@ -306,6 +329,7 @@ if !has('nvim')
   endif
 endif
 
+"
 "---------------------------------------------------------------------------
 " Plugin:
 "
@@ -387,8 +411,8 @@ nmap gx <Plug>(openbrowser-smart-search)
 nmap <Leader>d <Plug>DashSearch
 
 " lightline.vim
-    " \ 'colorscheme': 'tender',
 let g:lightline = {
+    \ 'colorscheme': 'tender',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'fugitive', 'filename' ] ]
