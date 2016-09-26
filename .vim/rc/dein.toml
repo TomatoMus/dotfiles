@@ -94,6 +94,10 @@ repo = 'thinca/vim-splash'
 [[plugins]]
 repo = 'metakirby5/codi.vim'
 
+# Context filetype library for Vim script
+[[plugins]]
+repo = "Shougo/context_filetype.vim"
+
 #---------------------------------------------------------------------------
 # ColorScheme:
 #

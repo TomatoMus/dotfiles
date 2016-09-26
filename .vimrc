@@ -377,10 +377,14 @@ autocmd BufWritePre * :FixWhitespace
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 
-" neocomplete
+" neocomplete & deoplete
+if !has('nvim')
 " 起動
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#enable_smart_case = 1
+else
+  let g:deoplete#enable_at_startup = 1
+endif
 
 " syntastic
 " 初期設定
@@ -495,25 +499,25 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
 exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
 exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
-autocmd filetype nerdtree highlight html_icon ctermbg=none ctermfg=red
+autocmd filetype nerdtree highlight html_icon ctermbg=none ctermfg=red guifg=#D28445
 autocmd filetype nerdtree syn match html_icon ## containedin=NERDTreeFile,html
-autocmd filetype nerdtree highlight css_icon ctermbg=none ctermfg=blue
+autocmd filetype nerdtree highlight css_icon ctermbg=none ctermfg=blue guifg=#6A9FB5
 autocmd filetype nerdtree syn match css_icon ## containedin=NERDTreeFile,css
-autocmd filetype nerdtree highlight js_icon ctermbg=none ctermfg=yellow
+autocmd filetype nerdtree highlight js_icon ctermbg=none ctermfg=yellow guifg=#90A959
 autocmd filetype nerdtree syn match js_icon ## containedin=NERDTreeFile,js
-autocmd filetype nerdtree highlight db_icon ctermbg=none ctermfg=yellow
+autocmd filetype nerdtree highlight db_icon ctermbg=none ctermfg=yellow guifg=#F4BF75
 autocmd filetype nerdtree syn match db_icon ## containedin=NERDTreeFile,db
-autocmd filetype nerdtree highlight python_icon ctermbg=none ctermfg=blue
+autocmd filetype nerdtree highlight python_icon ctermbg=none ctermfg=blue guifg=#6A9FB5
 autocmd filetype nerdtree syn match python_icon ## containedin=NERDTreeFile,py
-autocmd filetype nerdtree highlight php_icon ctermbg=none ctermfg=cyan
+autocmd filetype nerdtree highlight php_icon ctermbg=none ctermfg=cyan guifg=#6A9FB5
 autocmd filetype nerdtree syn match php_icon ## containedin=NERDTreeFile,php
-autocmd filetype nerdtree highlight ruby_icon ctermbg=none ctermfg=red
+autocmd filetype nerdtree highlight ruby_icon ctermbg=none ctermfg=red guifg=#AC4142
 autocmd filetype nerdtree syn match ruby_icon ## containedin=NERDTreeFile,rb
-autocmd filetype nerdtree highlight swift_icon ctermbg=none ctermfg=magenta
+autocmd filetype nerdtree highlight swift_icon ctermbg=none ctermfg=magenta guifg=#75B5AA
 autocmd filetype nerdtree syn match swift_icon ## containedin=NERDTreeFile,swift
-autocmd filetype nerdtree highlight md_icon ctermbg=none ctermfg=magenta
+autocmd filetype nerdtree highlight md_icon ctermbg=none ctermfg=magenta guifg=#AA759F
 autocmd filetype nerdtree syn match md_icon ## containedin=NERDTreeFile,md
-autocmd filetype nerdtree highlight sh_icon ctermbg=none ctermfg=green
+autocmd filetype nerdtree highlight sh_icon ctermbg=none ctermfg=green guifg=#90A959
 autocmd filetype nerdtree syn match sh_icon ## containedin=NERDTreeFile,sh
 
 " vim-anzu
