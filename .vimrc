@@ -74,6 +74,7 @@ set ignorecase
 " 大文字があるときは区別
 set smartcase
 
+
 "---------------------------------------------------------------------------
 " Edit:
 "
@@ -248,6 +249,19 @@ if has('nvim')
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif
 
+" ヴィジュアル選択範囲カラー
+if has('nvim')
+" tender
+  hi Visual guifg=NONE ctermfg=NONE guibg=#335261 ctermbg=0 gui=NONE cterm=NONE
+  hi VisualNOS guifg=NONE ctermfg=NONE guibg=#335261 ctermbg=0 gui=NONE cterm=NONE
+endif
+
+" 検索ハイライトカラー
+if has('nvim')
+  " tender
+  hi IncSearch guifg=#f43753 ctermfg=235 guibg=NONE ctermbg=15 gui=NONE cterm=NONE
+  hi Search guifg=#ffffff ctermfg=15 guibg=#f43753 ctermbg=NONE gui=underline,bold cterm=underline,bold
+endif
 
 "---------------------------------------------------------------------------
 " FileType:
