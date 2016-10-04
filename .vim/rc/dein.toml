@@ -6,6 +6,11 @@ repo = 'Shougo/dein.vim'
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
+# Dark powered asynchronous unite all interfaces for neovim
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+if = 'has("nvim")'
+
 # Run commands quickly.
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -184,5 +189,3 @@ on_ft = 'javascript'
 # A modern vim plugin for editing LaTeX files.
 [[plugins]]
 repo = 'lervag/vimtex'
-
-

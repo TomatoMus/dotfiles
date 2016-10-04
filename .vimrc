@@ -54,6 +54,7 @@ set guifont=Ricty\ for\ Powerline\ 14
 set encoding=utf-8
 scriptencoding utf-8
 
+
 "---------------------------------------------------------------------------
 " Encoding:
 "
@@ -263,6 +264,14 @@ if has('nvim')
   hi Search guifg=#ffffff ctermfg=15 guibg=#f43753 ctermbg=NONE gui=underline,bold cterm=underline,bold
 endif
 
+" タブラインカラー
+" if has('nvim')
+"   " tender
+"   hi TabLine guifg=#999999 ctermfg=246 guibg=#444444 ctermbg=238 gui=NONE cterm=NONE
+"   hi TabLineFill guifg=NONE ctermfg=NONE guibg=#444444 ctermbg=238 gui=NONE cterm=NONE
+"   hi TabLineSel guifg=#c9d05c ctermfg=185 guibg=#444444 ctermbg=NONE gui=bold cterm=bold
+" endif
+
 "---------------------------------------------------------------------------
 " FileType:
 "
@@ -409,9 +418,15 @@ let g:syntastic_error_symbol = '⚑'
 let g:syntastic_style_error_symbol = '⚑'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_style_warning_symbol = '⚠'
-
 " pythonの文法チェック
 let g:syntastic_python_checkers = ["flake8", "pep8"]
+" カラー
+if has('nvim')
+  " tender
+  highlight SignColumn guibg=#282828
+  hi SyntasticErrorSign guibg=#282828 guifg=#f43753
+  hi SyntasticWarningSign guibg=#282828 guifg=#ffc24b
+endif
 
 " vim-smartchr
 " 連続入力設定
