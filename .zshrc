@@ -249,3 +249,6 @@ eval "$(rbenv init -)"
 export XDG_CONFIG_HOME=$HOME/.config
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# node.jsのパス
+export PATH=$PATH:/Users/matsumotoyasuyuki/.nodebrew/current/bin

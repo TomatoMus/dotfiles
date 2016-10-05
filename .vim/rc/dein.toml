@@ -151,6 +151,12 @@ on_ft = 'python'
 # Activate the versions and the virtualenvs of pyenv within a live VIM session
 [[plugins]]
 repo = 'lambdalisue/vim-pyenv'
+on_ft = 'python'
+
+# deoplete.nvim source for Python
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+on_ft = 'python'
 
 #---------------------------------------------------------------------------
 # HTML5+CSS3:
@@ -180,6 +186,23 @@ repo = 'mattn/emmet-vim'
 # Enhanced javascript syntax file
 [[plugins]]
 repo = 'jelera/vim-javascript-syntax'
+on_ft = 'javascript'
+
+# Tern plugin for Vim
+[[plugins]]
+repo = 'marijnh/tern_for_vim'
+on_ft = 'javascript'
+build = 'npm install'
+
+# deoplete.nvim source for javascript
+# [[plugins]]
+# repo = 'carlitux/deoplete-ternjs'
+# on_ft = 'javascript'
+# build = 'npm install -g tern'
+
+# A vim javascript indent script
+[[plugins]]
+repo = 'jiangmiao/simple-javascript-indenter'
 on_ft = 'javascript'
 
 #---------------------------------------------------------------------------

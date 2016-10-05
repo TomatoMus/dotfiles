@@ -327,6 +327,11 @@ nnoremap sp gT
 " delete が効かないときの設定
 set backspace=indent,eol,start
 
+" matchit.vimの有効化
+if !exists('g:loaded_matchit')
+  runtime macros/matchit.vim
+endif
+
 "---------------------------------------------------------------------------
 " Platform:
 "
