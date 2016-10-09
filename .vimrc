@@ -322,6 +322,10 @@ nnoremap st :<C-u>tabnew<CR>
 nnoremap sn gt
 nnoremap sp gT
 
+"<leader>]で現在のファイルをChomeで開く
+nnoremap <leader>] :silent !open -a Google\ Chrome %<CR>
+
+
 "---------------------------------------------------------------------------
 " Commands:
 "
