@@ -103,6 +103,15 @@ repo = 'metakirby5/codi.vim'
 [[plugins]]
 repo = "Shougo/context_filetype.vim"
 
+# Web-enhanced Extensible Neovim Frontend
+[[plugins]]
+repo = 'rhysd/nyaovim-popup-tooltip'
+
+# Vim plugin that displays tags in a window, ordered by scope
+[[plugins]]
+repo = 'majutsushi/tagbar'
+
+
 #---------------------------------------------------------------------------
 # ColorScheme:
 #
@@ -157,6 +166,7 @@ on_ft = 'python'
 [[plugins]]
 repo = 'zchee/deoplete-jedi'
 on_ft = 'python'
+if = 'has("nvim")'
 
 #---------------------------------------------------------------------------
 # HTML5+CSS3:
@@ -188,22 +198,30 @@ repo = 'mattn/emmet-vim'
 repo = 'jelera/vim-javascript-syntax'
 on_ft = 'javascript'
 
-# Tern plugin for Vim
-[[plugins]]
-repo = 'marijnh/tern_for_vim'
-on_ft = 'javascript'
-build = 'npm install'
-
-# deoplete.nvim source for javascript
-# [[plugins]]
-# repo = 'carlitux/deoplete-ternjs'
-# on_ft = 'javascript'
-# build = 'npm install -g tern'
-
 # A vim javascript indent script
 [[plugins]]
 repo = 'jiangmiao/simple-javascript-indenter'
 on_ft = 'javascript'
+
+# Tern plugin for Vim
+# [[plugins]]
+# repo = 'marijnh/tern_for_vim'
+# on_ft = 'javascript'
+# build = 'npm install'
+
+# deoplete.nvim source for javascript
+[[plugins]]
+repo = 'carlitux/deoplete-ternjs'
+on_ft = 'javascript'
+if = 'has("nvim")'
+build = 'npm install -g tern'
+
+# deoplete.nvim source for javascript
+[[plugins]]
+repo = 'mhartington/deoplete-typescript'
+on_ft = 'javascript'
+if = 'has("nvim")'
+build = 'npm -g install typescript'
 
 #---------------------------------------------------------------------------
 # LaTex:

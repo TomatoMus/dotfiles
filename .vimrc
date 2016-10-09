@@ -39,6 +39,8 @@ endif
 if dein#check_install()
   call dein#install()
 endif
+" プラグインのアップデート
+" call dein#update()
 
 " シンタックス
 syntax on
@@ -570,15 +572,17 @@ augroup vim-anzu
 augroup END
 
 " evervim
-let g:evervim_devtoken='S=s105:U=b313cd:E=15cd466bea4:C=1557cb59190:P=1cd:A=en-devtoken:V=2:H=71e8d95e31a51e6c7a67364c44fc3e0c'
-nnoremap <Leader>l :EvervimNotebookList<CR>
-nnoremap <Leader>s :EvervimSearchByQuery<Space>
-nnoremap <Leader>c :EvervimCreateNote<CR>
-nnoremap <Leader>t :EvervimListTags<CR>
+" let g:evervim_devtoken='S=s105:U=b313cd:E=15cd466bea4:C=1557cb59190:P=1cd:A=en-devtoken:V=2:H=71e8d95e31a51e6c7a67364c44fc3e0c'
+" nnoremap <Leader>l :EvervimNotebookList<CR>
+" nnoremap <Leader>s :EvervimSearchByQuery<Space>
+" nnoremap <Leader>c :EvervimCreateNote<CR>
+" nnoremap <Leader>t :EvervimListTags<CR>
 
 " vim-splash
 let g:splash#path = $HOME . '/.vim/splashes/start.txt'
 
+" tagbar
+nmap <F8> :TagbarToggle<CR>
 
 "---------------------------------------------------------------------------
 " Others:
