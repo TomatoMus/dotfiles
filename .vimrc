@@ -208,7 +208,7 @@ augroup vimrc-auto-cursorline
       let s:cursorline_lock = 1
     endif
   endfunction
-augroup END
+augroup END　
 
 " ウィンドウの境界線の設定
 set fillchars+=vert:\⎢
