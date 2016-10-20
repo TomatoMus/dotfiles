@@ -117,16 +117,16 @@ repo = 'majutsushi/tagbar'
 #
 
 # Material theme for vim
-[[plugins]]
-repo = 'jdkanani/vim-material-theme'
+# [[plugins]]
+# repo = 'jdkanani/vim-material-theme'
 
 # A vim theme inspired by Atom's default dark theme
-[[plugins]]
-repo = 'gosukiwi/vim-atom-dark'
+# [[plugins]]
+# repo = 'gosukiwi/vim-atom-dark'
 
 # Monokai color scheme for Vim converted from Textmate theme
-[[plugins]]
-repo = 'sickill/vim-monokai'
+# [[plugins]]
+# repo = 'sickill/vim-monokai'
 
 # A 24bit colorscheme for Vim, Airline and Lightline
 [[plugins]]
@@ -169,6 +169,17 @@ on_ft = 'python'
 if = 'has("nvim")'
 
 #---------------------------------------------------------------------------
+# PHP:
+#
+
+# Padawan.php source for deoplete.
+# [[plugins]]
+# repo = 'pbogut/deoplete-padawan'
+# on_ft = 'php'
+# if = 'has("nvim")'
+
+
+#---------------------------------------------------------------------------
 # HTML5+CSS3:
 #
 
@@ -180,6 +191,7 @@ on_ft = 'html'
 # Add CSS3 syntax support
 [[plugins]]
 repo = 'hail2u/vim-css3-syntax'
+on_ft = 'css'
 
 # Preview colours in source code
 [[plugins]]
@@ -188,6 +200,7 @@ repo = 'ap/vim-css-color'
 # emmet for vim
 [[plugins]]
 repo = 'mattn/emmet-vim'
+on_ft = ['html', 'css', 'javascript', 'php']
 
 #---------------------------------------------------------------------------
 # Javascript:
@@ -230,3 +243,4 @@ build = 'npm -g install typescript'
 # A modern vim plugin for editing LaTeX files.
 [[plugins]]
 repo = 'lervag/vimtex'
+on_ft = ['tex', 'plaintex']

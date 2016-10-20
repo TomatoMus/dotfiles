@@ -132,6 +132,9 @@ endif
 " タブページを常に表示
 set showtabline=2
 
+" 画面分割
+set splitbelow
+
 "不可視文字の文字の可視化
 set list
 " set listchars=tab:»-,trail:˽·_,eol:¬,extends:»,precedes:«,nbsp:%
@@ -278,6 +281,30 @@ endif
 " FileType:
 "
 
+" javascript
+function! s:javascript_filetype_settings()
+    setlocal tabstop=2
+    setlocal shiftwidth=2
+    setlocal cindent
+endfunction
+autocmd FileType javascript call s:javascript_filetype_settings()
+
+" html
+function! s:html_filetype_settings()
+    setlocal tabstop=2
+    setlocal shiftwidth=2
+    setlocal includeexpr=substitute(v:fname,'^\\/','','') |
+endfunction
+autocmd FileType html call s:html_filetype_settings()
+
+" css
+function! s:css_filetype_settings()
+    setlocal tabstop=2
+    setlocal shiftwidth=2
+    setlocal cindent
+endfunction
+autocmd FileType css  call s:css_filetype_settings()
+
 "---------------------------------------------------------------------------
 " Mappings:
 "
@@ -393,7 +420,11 @@ let NERDTreeShowHidden = 1
 
 " indentLine
 " 文字を変更
-let g:indentLine_char = '⁚'
+let g:indentLine_char = '˖'
+" let g:indentLine_char = '⁚'
+" let g:indentLine_char = '︙'
+" let g:indentLine_char = '┊'
+" let g:indentLine_char="│"
 " 色の変更
 let g:indentLine_color_term = 239
 " let g:indentLine_color_gui = '#303435'
@@ -419,6 +450,11 @@ if !has('nvim')
 else
   let g:deoplete#enable_at_startup = 1
 endif
+" 説明ウィンドウを補完決定時に閉じる
+" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" 説明ウィンドウを常に閉じる
+set completeopt-=preview
+
 
 " syntastic
 " 初期設定
@@ -587,6 +623,16 @@ let g:splash#path = $HOME . '/.vim/splashes/start.txt'
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
+
+" tern_for_vim
+" let tern#is_show_argument_hints_enabled = 0
+" let g:tern_show_argument_hints='on_hold'
+" let g:tern_show_signature_in_pum = 0
+
+" deoplete-ternjs
+" let g:tern#command = ["tern"]
+" let g:tern#arguments = ["--persistent"]
+
 
 "---------------------------------------------------------------------------
 " Others:
