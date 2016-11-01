@@ -252,3 +252,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # node.jsのパス
 export PATH=$PATH:/Users/matsumotoyasuyuki/.nodebrew/current/bin
+
+# mampのmysql
+export PATH=$PATH:/Applications/MAMP/Library/bin

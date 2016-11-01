@@ -178,6 +178,10 @@ if = 'has("nvim")'
 # on_ft = 'php'
 # if = 'has("nvim")'
 
+# This script allows you to indent HTML sections in PHP files
+[[plugins]]
+repo = 'captbaritone/better-indent-support-for-php-with-html'
+on_ft = 'php'
 
 #---------------------------------------------------------------------------
 # HTML5+CSS3:

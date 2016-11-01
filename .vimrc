@@ -398,6 +398,7 @@ endif
 " NERDTree
 " ディレクトリ表示記号
 let g:NERDTreeDirArrows = 1
+" 
 " let g:NERDTreeDirArrowExpandable = '❐'
 let g:NERDTreeDirArrowExpandable = ''
 " let g:NERDTreeDirArrowCollapsible = '▿'
@@ -477,7 +478,7 @@ endif
 
 " vim-smartchr
 " 連続入力設定
-inoremap <buffer> <expr> = smartchr#loop('=', ' = ', ' == ')
+inoremap <buffer> <expr> = smartchr#loop('=', ' = ', ' == ', ' === ')
 inoremap <buffer> <expr> <S-=> smartchr#loop('+', ' + ')
 inoremap <buffer> <expr> - smartchr#loop('-', ' - ')
 inoremap <buffer> <expr> , smartchr#loop(',', ', ')
