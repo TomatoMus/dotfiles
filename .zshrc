@@ -255,3 +255,6 @@ export PATH=$PATH:/Users/matsumotoyasuyuki/.nodebrew/current/bin
 
 # mampのmysql
 export PATH=$PATH:/Applications/MAMP/Library/bin
+
+# qt5 of cmake for citra
+export CMAKE_PREFIX_PATH=/usr/local/Cellar/qt5/5.7.0/lib/cmake:$CMAKE_PREFIX_PATH

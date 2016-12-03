@@ -305,6 +305,18 @@ function! s:css_filetype_settings()
 endfunction
 autocmd FileType css  call s:css_filetype_settings()
 
+" php
+" 文字列中のSQLをハイライト
+let php_sql_query           = 1
+" Baselibメソッドのハイライト
+let php_baselib             = 1
+" 文字列中のHTMLをハイライト
+let php_htmlInStrings       = 1
+" <? をハイライト除外にする
+" let php_noShortTags         = 1
+" カッコが閉じていない場合にハイライト
+" let php_parent_error_close  = 1
+
 "---------------------------------------------------------------------------
 " Mappings:
 "
@@ -416,8 +428,10 @@ let g:nerdtree_tabs_open_on_new_tab=1
 nmap <silent> <C-e>      :NERDTreeToggle<CR>
 vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 omap <silent> <C-e>      :NERDTreeToggle<CR>
-"隠しファイルをデフォルトで表示させる
+" 隠しファイルをデフォルトで表示させる
 let NERDTreeShowHidden = 1
+" 開始時の余分な説明を消す
+let NERDTreeMinimalUI=1
 
 " indentLine
 " 文字を変更
@@ -461,13 +475,12 @@ set completeopt-=preview
 " 初期設定
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
-" let g:syntastic_error_symbol = '✗'
+let g:syntastic_python_checkers = ["flake8", "pep8"]
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_error_symbol = '⚑'
 let g:syntastic_style_error_symbol = '⚑'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_style_warning_symbol = '⚠'
-" pythonの文法チェック
-let g:syntastic_python_checkers = ["flake8", "pep8"]
 " カラー
 if has('nvim')
   " tender

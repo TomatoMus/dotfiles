@@ -183,6 +183,11 @@ if = 'has("nvim")'
 repo = 'captbaritone/better-indent-support-for-php-with-html'
 on_ft = 'php'
 
+# Padawan.php source for deoplete.
+[[plugins]]
+repo = 'pbogut/deoplete-padawan'
+on_ft = 'php'
+
 #---------------------------------------------------------------------------
 # HTML5+CSS3:
 #
