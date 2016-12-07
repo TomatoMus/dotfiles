@@ -1,3 +1,4 @@
+# Dark powered Vim/Neovim plugin manager
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
@@ -7,9 +8,18 @@ repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
 # Dark powered asynchronous unite all interfaces for neovim
+# [[plugins]]
+# repo = 'Shougo/denite.nvim'
+# if = 'has("nvim")'
+
+# Unite and create user interfaces
 [[plugins]]
-repo = 'Shougo/denite.nvim'
-if = 'has("nvim")'
+repo = 'Shougo/unite.vim'
+
+# Powerful file explorer implemented by Vim script
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+depends = 'unite.vim'
 
 # Run commands quickly.
 [[plugins]]
@@ -58,6 +68,7 @@ repo = 'scrooloose/syntastic'
 # Insert several candidates with a single key
 [[plugins]]
 repo = 'kana/vim-smartchr'
+on_i = 1
 
 # Open URI with your favorite browser
 [[plugins]]
@@ -144,13 +155,13 @@ repo = 'jacoborus/tender'
 # on_ft = 'python'
 
 ## Pyflakes, Pep8 and mccabe code complexity checker
-[[plugins]]
-repo = "andviro/flake8-vim"
-on_ft = 'python'
-hook_source = '''
-  let g:PyFlakeOnWrite = 1
-  let g:PyFlakeCheckers = 'pep8'
-'''
+# [[plugins]]
+# repo = "andviro/flake8-vim"
+# on_ft = 'python'
+# hook_source = '''
+#   let g:PyFlakeOnWrite = 1
+#   let g:PyFlakeCheckers = 'pep8'
+# '''
 
 ## A nicer Python indentation style
 [[plugins]]

@@ -184,7 +184,7 @@ augroup vimrc-auto-cursorline
       " atom
       hi CursorLine term=underline cterm=underline guibg=#242728
       if has('nvim')
-      " tender
+        " tender
         hi CursorLine term=underline cterm=underline guibg=#323232
       endif
       let s:cursorline_lock = 2
@@ -205,8 +205,8 @@ augroup vimrc-auto-cursorline
       " atom
       hi CursorLine term=underline cterm=underline guibg=#242728
       if has('nvim')
-      " tender
-      hi CursorLine term=underline cterm=underline guibg=#323232
+        " tender
+        hi CursorLine term=underline cterm=underline guibg=#323232
       endif
       let s:cursorline_lock = 1
     endif
@@ -218,7 +218,7 @@ set fillchars+=vert:\⎢
 " atom
 hi! VertSplit ctermfg=235 ctermbg=235 term=NONE guifg=#1d1f21 guibg=#1d1f21
 if has('nvim')
-" tender
+  " tender
   hi! VertSplit ctermfg=235 ctermbg=235 term=NONE guifg=#282828 guibg=#282828
 endif
 
@@ -226,7 +226,7 @@ endif
 " atom
 hi! NonText ctermfg=234 ctermbg=234 term=NONE guifg=#1D1F21 guibg=#1D1F21
 if has('nvim')
-" tender
+  " tender
   hi! NonText ctermfg=235 ctermbg=235 term=NONE guifg=#282828 guibg=#282828
 endif
 
@@ -238,7 +238,7 @@ set colorcolumn=+1
 " atom
 hi ColorColumn guibg=#242728
 if has('nvim')
-" tender
+  " tender
   hi ColorColumn guibg=#323232
 endif
 let &colorcolumn="80,".join(range(120,999),",")
@@ -248,8 +248,8 @@ set formatoptions=q
 
 " iTerm2でtmuxを使っている時にインサートモードでのカーソルの形状をかえる
 if $TERM_PROGRAM =~ "iTerm"
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 endif
 if has('nvim')
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -257,7 +257,7 @@ endif
 
 " ヴィジュアル選択範囲カラー
 if has('nvim')
-" tender
+  " tender
   hi Visual guifg=NONE ctermfg=NONE guibg=#335261 ctermbg=0 gui=NONE cterm=NONE
   hi VisualNOS guifg=NONE ctermfg=NONE guibg=#335261 ctermbg=0 gui=NONE cterm=NONE
 endif
@@ -281,27 +281,30 @@ endif
 " FileType:
 "
 
+" vim
+autocmd FileType vim setlocal tabstop=2 shiftwidth=2
+
 " javascript
 function! s:javascript_filetype_settings()
-    setlocal tabstop=2
-    setlocal shiftwidth=2
-    setlocal cindent
+  setlocal tabstop=2
+  setlocal shiftwidth=2
+  setlocal cindent
 endfunction
 autocmd FileType javascript call s:javascript_filetype_settings()
 
 " html
 function! s:html_filetype_settings()
-    setlocal tabstop=2
-    setlocal shiftwidth=2
-    setlocal includeexpr=substitute(v:fname,'^\\/','','') |
+  setlocal tabstop=2
+  setlocal shiftwidth=2
+  setlocal includeexpr=substitute(v:fname,'^\\/','','') |
 endfunction
 autocmd FileType html call s:html_filetype_settings()
 
 " css
 function! s:css_filetype_settings()
-    setlocal tabstop=2
-    setlocal shiftwidth=2
-    setlocal cindent
+  setlocal tabstop=2
+  setlocal shiftwidth=2
+  setlocal cindent
 endfunction
 autocmd FileType css  call s:css_filetype_settings()
 
@@ -433,13 +436,14 @@ let NERDTreeShowHidden = 1
 " 開始時の余分な説明を消す
 let NERDTreeMinimalUI=1
 
+" Vimfiler
+nnoremap <Leader>fe :<C-u>VimFilerExplorer<CR><C-u>
+nnoremap <Leader>fc :<C-u>VimFilerCurrentDir<CR><C-u>
+nnoremap <Leader>fb :<C-u>VimFilerBufferDir<CR><C-u>
+
 " indentLine
-" 文字を変更
+" 文字を変更('⁚', '︙', '┊', "│")
 let g:indentLine_char = '˖'
-" let g:indentLine_char = '⁚'
-" let g:indentLine_char = '︙'
-" let g:indentLine_char = '┊'
-" let g:indentLine_char="│"
 " 色の変更
 let g:indentLine_color_term = 239
 " let g:indentLine_color_gui = '#303435'
@@ -456,10 +460,13 @@ autocmd BufWritePre * :FixWhitespace
 " snippetの展開
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
+" 自分用 snippet
+let s:my_snippet = '~/.vim/snippets/'
+let g:neosnippet#snippets_directory = s:my_snippet
 
 " neocomplete & deoplete
 if !has('nvim')
-" 起動
+  " 起動
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_smart_case = 1
 else
@@ -477,6 +484,8 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_python_checkers = ["flake8", "pep8"]
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_javascript_checker = ['jshint']
+" エラー時のアイコン
 let g:syntastic_error_symbol = '⚑'
 let g:syntastic_style_error_symbol = '⚑'
 let g:syntastic_warning_symbol = '⚠'
@@ -491,11 +500,13 @@ endif
 
 " vim-smartchr
 " 連続入力設定
-inoremap <buffer> <expr> = smartchr#loop('=', ' = ', ' == ', ' === ')
-inoremap <buffer> <expr> <S-=> smartchr#loop('+', ' + ')
-inoremap <buffer> <expr> - smartchr#loop('-', ' - ')
-inoremap <buffer> <expr> , smartchr#loop(',', ', ')
-inoremap <buffer> <expr> . smartchr#loop('.', '<%=  %>', '<%  %>')
+inoremap <expr> = smartchr#loop('=', ' = ', ' == ', ' === ')
+inoremap <expr> <S-=> smartchr#loop('+', ' + ')
+inoremap <expr> - smartchr#loop('-', ' - ')
+inoremap <expr> , smartchr#loop(',', ', ')
+inoremap <expr> . smartchr#loop('.', '<%=  %>', '<%  %>')
+inoremap <expr> < smartchr#loop('<', ' < ')
+inoremap <expr> > smartchr#loop('>', ' > ', '->')
 
 " open-browser.vim
 let g:netrw_nogx = 1
@@ -506,24 +517,24 @@ nmap <Leader>d <Plug>DashSearch
 
 " lightline.vim
 let g:lightline = {
-    \ 'colorscheme': 'tender',
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'fugitive', 'filename' ] ]
-    \ },
-    \ 'component_function': {
-    \   'fugitive': 'LightLineFugitive',
-    \   'readonly': 'LightLineReadonly',
-    \   'modified': 'LightLineModified',
-    \   'filename': 'LightLineFilename',
-    \   'filetype': 'MyFiletype',
-    \   'fileformat': 'MyFileformat'
-    \ },
-    \ 'separator': { 'left': '', 'right': '' },
-    \ 'subseparator': { 'left': '', 'right': '' },
-    \ 'tabline_separator': { 'left': '', 'right': '' },
-    \ 'tabline_subseparator': { 'left': '', 'right': '' }
-    \ }
+      \ 'colorscheme': 'tender',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'filename' ] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'LightLineFugitive',
+      \   'readonly': 'LightLineReadonly',
+      \   'modified': 'LightLineModified',
+      \   'filename': 'LightLineFilename',
+      \   'filetype': 'MyFiletype',
+      \   'fileformat': 'MyFileformat'
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' },
+      \ 'tabline_separator': { 'left': '', 'right': '' },
+      \ 'tabline_subseparator': { 'left': '', 'right': '' }
+      \ }
 " lightlineでdeviconを表示
 function! MyFiletype()
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
@@ -565,18 +576,20 @@ endfunction
 " ファイル名
 function! LightLineFilename()
   return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-       \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+        \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
 endfunction
 
 " vim-devicons
 let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
+let g:webdevicons_enable_unite = 1
+let g:webdevicons_enable_vimfiler = 1
 " ディレクトリアイコン
 " let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 " let g:DevIconsEnableFoldersOpenClose = 1
-" let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
-" let g:DevIconsDefaultFolderOpenSymbol = ''
+let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
+let g:DevIconsDefaultFolderOpenSymbol = ''
 " ファイル別アイコン
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
 " let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['html'] = ''
@@ -586,8 +599,8 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['swift'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['txt'] = ''
 " ファイル別アイコンカラー
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+  exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+  exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 autocmd filetype nerdtree highlight html_icon ctermbg=none ctermfg=red guifg=#D28445
 autocmd filetype nerdtree syn match html_icon ## containedin=NERDTreeFile,html
@@ -619,10 +632,10 @@ nmap # <Plug>(anzu-sharp-with-echo)
 " statusline
 set statusline=%{anzu#search_status()}
 augroup vim-anzu
-" 一定時間キー入力がないとき、ウインドウを移動したとき、タブを移動したときに
-" 検索ヒット数の表示を消去する
-    autocmd!
-    autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
+  " 一定時間キー入力がないとき、ウインドウを移動したとき、タブを移動したときに
+  " 検索ヒット数の表示を消去する
+  autocmd!
+  autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
 augroup END
 
 " evervim
@@ -656,4 +669,3 @@ nmap <F8> :TagbarToggle<CR>
 set printoptions=number:y,left:5pc
 " プリント時のフォント
 set printfont=Ricty\ for\ Powerline\ 12
-
