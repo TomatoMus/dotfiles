@@ -122,6 +122,10 @@ repo = 'rhysd/nyaovim-popup-tooltip'
 [[plugins]]
 repo = 'majutsushi/tagbar'
 
+# responsive tabline
+[[plugins]]
+repo = 'yami-beta/vim-responsive-tabline'
+
 
 #---------------------------------------------------------------------------
 # ColorScheme:

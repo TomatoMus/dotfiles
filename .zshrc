@@ -245,6 +245,10 @@ eval "$(pyenv init -)"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+# phpenvの環境パス
+export PATH="$HOME/.phpenv/bin:$PATH"
+eval "$(phpenv init -)"
+
 # neovim
 export XDG_CONFIG_HOME=$HOME/.config
 

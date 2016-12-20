@@ -105,7 +105,9 @@ set t_Co=256
 " set background=dark
 
 " truecolor
-set termguicolors
+if (has("termguicolors"))
+  set termguicolors
+endif
 
 " 起動時メッセージを表示しない
 set shortmess& shortmess+=I
@@ -269,12 +271,13 @@ if has('nvim')
   hi Search guifg=#ffffff ctermfg=15 guibg=#f43753 ctermbg=NONE gui=underline,bold cterm=underline,bold
 endif
 
+
 " タブラインカラー
 " if has('nvim')
-"   " tender
-"   hi TabLine guifg=#999999 ctermfg=246 guibg=#444444 ctermbg=238 gui=NONE cterm=NONE
-"   hi TabLineFill guifg=NONE ctermfg=NONE guibg=#444444 ctermbg=238 gui=NONE cterm=NONE
-"   hi TabLineSel guifg=#c9d05c ctermfg=185 guibg=#444444 ctermbg=NONE gui=bold cterm=bold
+  " tender
+  " hi TabLine guifg=#f43753 ctermfg=246 guibg=#444444 ctermbg=238 gui=NONE cterm=NONE
+  " hi TabLineFill guifg=NONE ctermfg=NONE guibg=#444444 ctermbg=238 gui=NONE cterm=NONE
+  " hi TabLineSel guifg=#f43753 ctermfg=246 gui=NONE
 " endif
 
 "---------------------------------------------------------------------------
@@ -517,7 +520,7 @@ nmap <Leader>d <Plug>DashSearch
 
 " lightline.vim
 let g:lightline = {
-      \ 'colorscheme': 'tender',
+      \ 'colorscheme': 'tenderplus',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive', 'filename' ] ]
@@ -533,7 +536,8 @@ let g:lightline = {
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' },
       \ 'tabline_separator': { 'left': '', 'right': '' },
-      \ 'tabline_subseparator': { 'left': '', 'right': '' }
+      \ 'tabline_subseparator': { 'left': '', 'right': '' },
+      \ 'enable': { 'tabline': 0 }
       \ }
 " lightlineでdeviconを表示
 function! MyFiletype()
@@ -660,7 +664,6 @@ nmap <F8> :TagbarToggle<CR>
 " let g:tern#command = ["tern"]
 " let g:tern#arguments = ["--persistent"]
 
-
 "---------------------------------------------------------------------------
 " Others:
 "
@@ -669,3 +672,5 @@ nmap <F8> :TagbarToggle<CR>
 set printoptions=number:y,left:5pc
 " プリント時のフォント
 set printfont=Ricty\ for\ Powerline\ 12
+
+
