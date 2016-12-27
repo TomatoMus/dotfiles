@@ -126,6 +126,9 @@ repo = 'majutsushi/tagbar'
 [[plugins]]
 repo = 'yami-beta/vim-responsive-tabline'
 
+# Brings physics-based smooth scrolling to the Vim world!
+[[plugins]]
+repo = 'yuttie/comfortable-motion.vim'
 
 #---------------------------------------------------------------------------
 # ColorScheme:
