@@ -263,6 +263,14 @@ on_ft = 'javascript'
 if = 'has("nvim")'
 build = 'npm -g install typescript'
 
+# React:
+#
+
+# React JSX syntax highlighting and indenting for vim.
+[[plugins]]
+repo = 'mxw/vim-jsx'
+
+
 #---------------------------------------------------------------------------
 # LaTex:
 #

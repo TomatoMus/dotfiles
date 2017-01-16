@@ -664,6 +664,9 @@ nmap <F8> :TagbarToggle<CR>
 " let g:tern#command = ["tern"]
 " let g:tern#arguments = ["--persistent"]
 
+" vim-jsx
+let g:jsx_ext_required = 0
+
 "---------------------------------------------------------------------------
 " Others:
 "
