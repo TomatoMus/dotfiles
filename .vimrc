@@ -123,7 +123,7 @@ endif
 set number
 
 " 相対行番号表示
-set relativenumber
+" set relativenumber
 
 " 行番号背景
 hi LineNr guibg=#1D1F21
