@@ -141,12 +141,12 @@ function ph() {
 }
 
 # gvim newtab
-export PATH="$HOME/.anyenv/bin:$PATH"
+# export PATH="$HOME/.anyenv/bin:$PATH"
 
 
-
-export PATH=/usr/local/etc/clamav/:/usr/local/Cellar/php55/5.5.29/bin:/usr/local/Cellar/php55/5.5.29/bin/pear:/usr/local/Cellar/php55/5.5.29:/usr/local/opt/icu4c/lib:/usr/local/opt/icu4c/include:$PATH
-eval "$(anyenv init - zsh)"
+export PATH=/Applications/MAMP/bin/php/php7.0.10/bin:$PATH
+# export PATH=/usr/local/etc/clamav/:/usr/local/Cellar/php55/5.5.29/bin:/usr/local/Cellar/php55/5.5.29/bin/pear:/usr/local/Cellar/php55/5.5.29:/usr/local/opt/icu4c/lib:/usr/local/opt/icu4c/include:$PATH
+# eval "$(anyenv init - zsh)"
 
 # install go
 export GOROOT=/usr/local/go
@@ -246,8 +246,8 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 # phpenvの環境パス
-export PATH="$HOME/.phpenv/bin:$PATH"
-eval "$(phpenv init -)"
+# export PATH="$HOME/.phpenv/bin:$PATH"
+# eval "$(phpenv init -)"
 
 # neovim
 export XDG_CONFIG_HOME=$HOME/.config
@@ -262,3 +262,7 @@ export PATH=$PATH:/Applications/MAMP/Library/bin
 
 # qt5 of cmake for citra
 export CMAKE_PREFIX_PATH=/usr/local/Cellar/qt5/5.7.0/lib/cmake:$CMAKE_PREFIX_PATH
+
+# valet
+export PATH=$PATH:/Users/matsumotoyasuyuki/.composer/vendor/bin
+

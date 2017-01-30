@@ -130,6 +130,14 @@ repo = 'yami-beta/vim-responsive-tabline'
 [[plugins]]
 repo = 'yuttie/comfortable-motion.vim'
 
+# Vim plugin to dim inactive windows
+[[plugins]]
+repo = 'blueyed/vim-diminactive'
+
+# Insert or delete brackets, parens, quotes in pair
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+
 #---------------------------------------------------------------------------
 # ColorScheme:
 #
@@ -263,13 +271,13 @@ on_ft = 'javascript'
 if = 'has("nvim")'
 build = 'npm -g install typescript'
 
-# React:
-#
-
 # React JSX syntax highlighting and indenting for vim.
 [[plugins]]
 repo = 'mxw/vim-jsx'
 
+# Syntax Highligth for Vue.js components
+[[plugins]]
+repo = 'posva/vim-vue'
 
 #---------------------------------------------------------------------------
 # LaTex:

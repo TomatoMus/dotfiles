@@ -280,6 +280,18 @@ endif
   " hi TabLineSel guifg=#f43753 ctermfg=246 gui=NONE
 " endif
 
+" 背景半透明
+if !has('gui_running')
+    augroup seiya
+        autocmd!
+        autocmd VimEnter,ColorScheme * highlight Normal guibg=none
+        autocmd VimEnter,ColorScheme * highlight LineNr guibg=none
+        autocmd VimEnter,ColorScheme * highlight SignColumn guibg=none
+        autocmd VimEnter,ColorScheme * highlight VertSplit guibg=none
+        autocmd VimEnter,ColorScheme * highlight NonText guibg=none
+    augroup END
+endif
+
 "---------------------------------------------------------------------------
 " FileType:
 "
@@ -348,16 +360,16 @@ inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
 " 括弧の補完
-inoremap { {}<LEFT>
-inoremap [ []<LEFT>
-inoremap ( ()<LEFT>
-inoremap " ""<LEFT>
-inoremap ' ''<LEFT>
-vnoremap { "zdi^V{<C-R>z}<ESC>
-vnoremap [ "zdi^V[<C-R>z]<ESC>
-vnoremap ( "zdi^V(<C-R>z)<ESC>
-vnoremap " "zdi^V"<C-R>z^V"<ESC>
-vnoremap ' "zdi'<C-R>z'<ESC>
+" inoremap { {}<LEFT>
+" inoremap [ []<LEFT>
+" inoremap ( ()<LEFT>
+" inoremap " ""<LEFT>
+" inoremap ' ''<LEFT>
+" vnoremap { "zdi^V{<C-R>z}<ESC>
+" vnoremap [ "zdi^V[<C-R>z]<ESC>
+" vnoremap ( "zdi^V(<C-R>z)<ESC>
+" vnoremap " "zdi^V"<C-R>z^V"<ESC>
+" vnoremap ' "zdi'<C-R>z'<ESC>
 
 " F3で行番号の絶対行数/相対行数の変更"
 nnoremap <F3> :<C-u>setlocal relativenumber!<CR>
@@ -445,7 +457,7 @@ nnoremap <Leader>fc :<C-u>VimFilerCurrentDir<CR><C-u>
 nnoremap <Leader>fb :<C-u>VimFilerBufferDir<CR><C-u>
 
 " indentLine
-" 文字を変更('⁚', '︙', '┊', "│")
+" 文字を変更('˖', '⁚', '︙', '┊', "│", "")
 let g:indentLine_char = '˖'
 " 色の変更
 let g:indentLine_color_term = 239
