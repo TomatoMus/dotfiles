@@ -187,7 +187,7 @@ augroup vimrc-auto-cursorline
       hi CursorLine term=underline cterm=underline guibg=#242728
       if has('nvim')
         " tender
-        hi CursorLine term=underline cterm=underline guibg=#323232
+        hi CursorLine term=underline cterm=underline gui=underline guibg=#323232
       endif
       let s:cursorline_lock = 2
     elseif a:event ==# 'WinLeave'
@@ -208,7 +208,7 @@ augroup vimrc-auto-cursorline
       hi CursorLine term=underline cterm=underline guibg=#242728
       if has('nvim')
         " tender
-        hi CursorLine term=underline cterm=underline guibg=#323232
+        hi CursorLine term=underline cterm=underline gui=underline guibg=#323232
       endif
       let s:cursorline_lock = 1
     endif
@@ -216,20 +216,24 @@ augroup vimrc-auto-cursorline
 augroup END　
 
 " ウィンドウの境界線の設定
-set fillchars+=vert:\⎢
+" set fillchars+=vert:\⎢
+set fillchars=""
 " atom
-hi! VertSplit ctermfg=235 ctermbg=235 term=NONE guifg=#1d1f21 guibg=#1d1f21
+hi! VertSplit ctermfg=235 ctermbg=235 term=NONE guifg=#1d1f21
 if has('nvim')
   " tender
-  hi! VertSplit ctermfg=235 ctermbg=235 term=NONE guifg=#282828 guibg=#282828
+  hi! VertSplit ctermfg=none ctermbg=none term=NONE guifg=#282828
 endif
 
-" 初期起動時の空行のチルダの設定
+" 初期起動時の空行のチルダや改行文字の設定(NonText:eol,extends,precedes)
 " atom
 hi! NonText ctermfg=234 ctermbg=234 term=NONE guifg=#1D1F21 guibg=#1D1F21
 if has('nvim')
   " tender
-  hi! NonText ctermfg=235 ctermbg=235 term=NONE guifg=#282828 guibg=#282828
+  hi! NonText ctermfg=235 ctermbg=235 term=NONE guifg=#323232
+  " hi! link EndOfBuffer Ignore
+  hi! EndOfBuffer gui=none guifg=#282828 guibg=none
+  " hi! EndOfBuffer ctermbg=none ctermfg=none guibg=none guifg=none
 endif
 
 
@@ -443,13 +447,18 @@ let g:nerdtree_tabs_smart_startup_focus=1
 " 新規タブを開いた時にもNERDTreeを表示する
 let g:nerdtree_tabs_open_on_new_tab=1
 " <C-e>でNERDTreeをオンオフ
-nmap <silent> <C-e>      :NERDTreeToggle<CR>
-vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
-omap <silent> <C-e>      :NERDTreeToggle<CR>
+" nmap <silent> <C-e>      :NERDTreeToggle<CR>
+" vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+" omap <silent> <C-e>      :NERDTreeToggle<CR>
+" <C-e>でNERDTreeをオンオフ(タブ間で共有)
+nmap <silent> <C-e>      :NERDTreeTabsToggle<CR>
+vmap <silent> <C-e> <Esc>:NERDTreeTabsToggle<CR>
+omap <silent> <C-e>      :NERDTreeTabsToggle<CR>
 " 隠しファイルをデフォルトで表示させる
 let NERDTreeShowHidden = 1
 " 開始時の余分な説明を消す
 let NERDTreeMinimalUI=1
+" autocmd filetype nerdtree hi Normal guibg=#282828
 
 " Vimfiler
 nnoremap <Leader>fe :<C-u>VimFilerExplorer<CR><C-u>
@@ -457,7 +466,7 @@ nnoremap <Leader>fc :<C-u>VimFilerCurrentDir<CR><C-u>
 nnoremap <Leader>fb :<C-u>VimFilerBufferDir<CR><C-u>
 
 " indentLine
-" 文字を変更('˖', '⁚', '︙', '┊', "│", "")
+" 文字を変更('˖', "•", '⁚', '︙', '┊', "│", "")
 let g:indentLine_char = '˖'
 " 色の変更
 let g:indentLine_color_term = 239
@@ -500,17 +509,22 @@ let g:syntastic_auto_loc_list=2
 let g:syntastic_python_checkers = ["flake8", "pep8"]
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_javascript_checker = ['jshint']
-" エラー時のアイコン
-let g:syntastic_error_symbol = '⚑'
-let g:syntastic_style_error_symbol = '⚑'
-let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_style_warning_symbol = '⚠'
+" エラー時のアイコン "⚑", "⚠", "●•"
+let g:syntastic_error_symbol = '●'
+let g:syntastic_style_error_symbol = '●'
+let g:syntastic_warning_symbol = '●'
+let g:syntastic_style_warning_symbol = '●'
 " カラー
 if has('nvim')
   " tender
-  highlight SignColumn guibg=#282828
-  hi SyntasticErrorSign guibg=#282828 guifg=#f43753
-  hi SyntasticWarningSign guibg=#282828 guifg=#ffc24b
+  " highlight SignColumn guibg=#282828
+  " hi SyntasticErrorSign guibg=#282828 guifg=#f43753
+  " hi SyntasticWarningSign guibg=#282828 guifg=#ffc24b
+  hi SignColumn guibg=none
+  hi SyntasticErrorSign guibg=none guifg=#f43753
+  hi SyntasticWarningSign guibg=none guifg=#ffc24b
+  " hi SyntasticErrorLine guibg=#79313c
+  " hi SyntasticWarningLine guibg=#715b2f
 endif
 
 " vim-smartchr

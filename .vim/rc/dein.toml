@@ -33,6 +33,10 @@ repo = 'scrooloose/nerdtree'
 [[plugins]]
 repo = 'jistr/vim-nerdtree-tabs'
 
+# Extra syntax and highlight for nerdtree files
+[[plugins]]
+repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
+
 # A light and configurable statusline
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -278,6 +282,16 @@ repo = 'mxw/vim-jsx'
 # Syntax Highligth for Vue.js components
 [[plugins]]
 repo = 'posva/vim-vue'
+
+#---------------------------------------------------------------------------
+# YAML:
+#
+
+# Add additional support for Ansible in VIM
+[[plugins]]
+repo = 'chase/vim-ansible-yaml'
+
+
 
 #---------------------------------------------------------------------------
 # LaTex:
