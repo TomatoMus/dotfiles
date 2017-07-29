@@ -39,7 +39,7 @@ set smartcase
 set blinkcursor
 
 " 相対行番号表示
-set relativenumber
+" set relativenumber
 
 "不可視文字の文字の可視化
 set list

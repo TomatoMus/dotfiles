@@ -37,6 +37,10 @@ repo = 'jistr/vim-nerdtree-tabs'
 [[plugins]]
 repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
 
+# A plugin of NERDTree showing git status
+# [[plugins]]
+# repo = 'Xuyuanp/nerdtree-git-plugin'
+
 # A light and configurable statusline
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -66,8 +70,12 @@ repo = 'tpope/vim-surround'
 repo = 'Shougo/neosnippet-snippets'
 
 # Syntax checking hacks
+# [[plugins]]
+# repo = 'scrooloose/syntastic'
+
+# Asynchronous Lint Engine
 [[plugins]]
-repo = 'scrooloose/syntastic'
+repo = 'w0rp/ale'
 
 # Insert several candidates with a single key
 [[plugins]]
@@ -142,6 +150,14 @@ repo = 'blueyed/vim-diminactive'
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
 
+# Plugin to toggle, display and navigate marks
+# [[plugins]]
+# repo = 'kshenoy/vim-signature'
+
+# Underlines the word under the cursor
+[[plugins]]
+repo = 'itchyny/vim-cursorword'
+
 #---------------------------------------------------------------------------
 # ColorScheme:
 #
@@ -161,6 +177,10 @@ repo = 'jiangmiao/auto-pairs'
 # A 24bit colorscheme for Vim, Airline and Lightline
 [[plugins]]
 repo = 'jacoborus/tender'
+
+# Oceanic Next theme for neovim
+[[plugins]]
+repo = 'mhartington/oceanic-next'
 
 #---------------------------------------------------------------------------
 # Python:
@@ -219,6 +239,15 @@ repo = 'pbogut/deoplete-padawan'
 on_ft = 'php'
 
 #---------------------------------------------------------------------------
+# Java:
+#
+
+# Updated javacomplete plugin for vim.
+[[plugins]]
+repo = 'artur-shaik/vim-javacomplete2'
+on_ft = 'java'
+
+#---------------------------------------------------------------------------
 # HTML5+CSS3:
 #
 
@@ -240,6 +269,10 @@ repo = 'ap/vim-css-color'
 [[plugins]]
 repo = 'mattn/emmet-vim'
 on_ft = ['html', 'css', 'javascript', 'php']
+
+# Auto close (X)HTML tags
+[[plugins]]
+repo = 'alvan/vim-closetag'
 
 #---------------------------------------------------------------------------
 # Javascript:
@@ -292,6 +325,9 @@ repo = 'posva/vim-vue'
 repo = 'chase/vim-ansible-yaml'
 
 
+#---------------------------------------------------------------------------
+# Markdown:
+#
 
 #---------------------------------------------------------------------------
 # LaTex:

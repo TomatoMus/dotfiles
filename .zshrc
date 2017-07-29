@@ -1,6 +1,5 @@
 # Path to your oh-my-zsh installation.
-# export ZSH=/home/yasu/.oh-my-zsh
-export ZSH=/Users/matsumotoyasuyuki/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 #[alias]
 # alias vi='vim'
 alias vi='nvim'
@@ -255,7 +254,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # node.jsのパス
-export PATH=$PATH:/Users/matsumotoyasuyuki/.nodebrew/current/bin
+export PATH=$PATH:$HOME/.nodebrew/current/bin
 
 # mampのmysql
 export PATH=$PATH:/Applications/MAMP/Library/bin
@@ -264,5 +263,10 @@ export PATH=$PATH:/Applications/MAMP/Library/bin
 export CMAKE_PREFIX_PATH=/usr/local/Cellar/qt5/5.7.0/lib/cmake:$CMAKE_PREFIX_PATH
 
 # valet
-export PATH=$PATH:/Users/matsumotoyasuyuki/.composer/vendor/bin
+export PATH=$PATH:$HOME/.composer/vendor/bin
+
+# go
+export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 

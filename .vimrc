@@ -77,6 +77,12 @@ set ignorecase
 " 大文字があるときは区別
 set smartcase
 
+" カーソル位置記憶
+autocmd BufReadPost *
+      \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+      \   exe "normal! g'\"" |
+      \ endif
+
 
 "---------------------------------------------------------------------------
 " Edit:
@@ -117,6 +123,7 @@ colorscheme atom-dark-256
 " colorscheme material-theme
 if has('nvim')
   colorscheme tender
+  " colorscheme OceanicNext
 endif
 
 " 絶対行番号表示
@@ -423,6 +430,8 @@ if !has('nvim')
     endif
   endif
 endif
+" neovim
+set mouse=a
 
 "
 "---------------------------------------------------------------------------
@@ -504,28 +513,45 @@ set completeopt-=preview
 
 " syntastic
 " 初期設定
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=2
-let g:syntastic_python_checkers = ["flake8", "pep8"]
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_javascript_checker = ['jshint']
+" let g:syntastic_enable_signs=1
+" let g:syntastic_auto_loc_list=2
+" let g:syntastic_python_checkers = ["flake8", "pep8"]
+" let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+" let g:syntastic_javascript_checker = ['jshint']
 " エラー時のアイコン "⚑", "⚠", "●•"
-let g:syntastic_error_symbol = '●'
-let g:syntastic_style_error_symbol = '●'
-let g:syntastic_warning_symbol = '●'
-let g:syntastic_style_warning_symbol = '●'
+" let g:syntastic_error_symbol = '●'
+" let g:syntastic_style_error_symbol = '●'
+" let g:syntastic_warning_symbol = '●'
+" let g:syntastic_style_warning_symbol = '●'
 " カラー
-if has('nvim')
+" if has('nvim')
   " tender
   " highlight SignColumn guibg=#282828
   " hi SyntasticErrorSign guibg=#282828 guifg=#f43753
   " hi SyntasticWarningSign guibg=#282828 guifg=#ffc24b
-  hi SignColumn guibg=none
-  hi SyntasticErrorSign guibg=none guifg=#f43753
-  hi SyntasticWarningSign guibg=none guifg=#ffc24b
+  " hi SignColumn guibg=none
+  " hi SyntasticErrorSign guibg=none guifg=#f43753
+  " hi SyntasticWarningSign guibg=none guifg=#ffc24b
   " hi SyntasticErrorLine guibg=#79313c
   " hi SyntasticWarningLine guibg=#715b2f
-endif
+" endif
+
+" ale
+let g:ale_linters = {
+      \   'javascript': ['eslint'],
+      \}
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '●'
+let g:ale_sign_warning = '●'
+highlight ALEErrorSign guibg=none guifg=#f43753
+highlight ALEWarningSign guibg=none guifg=#ffc24b
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+let g:ale_statusline_format = ['● %d', '/ %d', '']
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
 
 " vim-smartchr
 " 連続入力設定
@@ -549,7 +575,7 @@ let g:lightline = {
       \ 'colorscheme': 'tenderplus',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename' ] ]
+      \             [ 'fugitive', 'filename', 'ale' ] ]
       \ },
       \ 'component_function': {
       \   'fugitive': 'LightLineFugitive',
@@ -557,7 +583,8 @@ let g:lightline = {
       \   'modified': 'LightLineModified',
       \   'filename': 'LightLineFilename',
       \   'filetype': 'MyFiletype',
-      \   'fileformat': 'MyFileformat'
+      \   'fileformat': 'MyFileformat',
+      \   'ale': 'ALEGetStatusLine'
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' },
@@ -682,16 +709,22 @@ let g:splash#path = $HOME . '/.vim/splashes/start.txt'
 nmap <F8> :TagbarToggle<CR>
 
 " tern_for_vim
-" let tern#is_show_argument_hints_enabled = 0
-" let g:tern_show_argument_hints='on_hold'
-" let g:tern_show_signature_in_pum = 0
+let tern#is_show_argument_hints_enabled = 0
+let g:tern_show_argument_hints='on_hold'
+let g:tern_show_signature_in_pum = 0
 
 " deoplete-ternjs
-" let g:tern#command = ["tern"]
-" let g:tern#arguments = ["--persistent"]
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
 
 " vim-jsx
 let g:jsx_ext_required = 0
+
+" vim-javacomplete2
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+" vim-closetag
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.ejs'
 
 "---------------------------------------------------------------------------
 " Others:
