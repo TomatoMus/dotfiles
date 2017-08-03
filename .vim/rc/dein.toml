@@ -316,6 +316,16 @@ repo = 'mxw/vim-jsx'
 [[plugins]]
 repo = 'posva/vim-vue'
 
+# Generate JSDoc to your JavaScript code.
+[[plugins]]
+repo = 'heavenshell/vim-jsdoc'
+on_ft = 'javascript'
+
+# Tools and environment to make Vim superb for developing with Node.js. Like Rails.vim for Node.
+[[plugins]]
+repo = 'moll/vim-node'
+on_ft = 'javascript'
+
 #---------------------------------------------------------------------------
 # YAML:
 #
@@ -328,6 +338,20 @@ repo = 'chase/vim-ansible-yaml'
 #---------------------------------------------------------------------------
 # Markdown:
 #
+
+#---------------------------------------------------------------------------
+# UML:
+#
+
+# vim syntax file for plantuml
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+on_ft = 'plantuml'
+
+# Inline previews for Plantuml sequence diagrams. OMG!
+[[plugins]]
+repo = 'scrooloose/vim-slumlord'
+on_ft = 'plantuml'
 
 #---------------------------------------------------------------------------
 # LaTex:

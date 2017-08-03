@@ -726,6 +726,15 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 " vim-closetag
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.ejs'
 
+" simple-javascript-indenter
+let g:SimpleJsIndenter_BriefMode = 2
+
+" vim-json
+let g:vim_json_syntax_conceal = 0
+
+" vim-jsdoc
+nmap <silent> <C-l> <Plug>(jsdoc)
+
 "---------------------------------------------------------------------------
 " Others:
 "
