@@ -13,6 +13,7 @@ alias up='cd ..'
 # time that oh-my-zsh is loaded.
 # phコマンドで意味表示
 ZSH_THEME="wedisagree"
+# ZSH_THEME="spaceship"
 # ZSH_THEME="materialshelldark"
 # ZSH_THEME="agnoster"
 # ZSH_THEME="avit"

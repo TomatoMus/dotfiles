@@ -274,6 +274,10 @@ on_ft = ['html', 'css', 'javascript', 'php']
 [[plugins]]
 repo = 'alvan/vim-closetag'
 
+# A Vim plugin that always highlights the enclosing html/xml tags
+[[plugins]]
+repo = 'valloric/matchtagalways'
+
 #---------------------------------------------------------------------------
 # Javascript:
 #
