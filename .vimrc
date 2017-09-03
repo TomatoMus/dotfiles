@@ -756,7 +756,7 @@ nmap s <Plug>(easymotion-overwin-f2)
 " Smartcase
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1
-map <Space><Space> <Plug>(easymotion-prefix)
+map ,, <Plug>(easymotion-prefix)
 
 "---------------------------------------------------------------------------
 " Others:
