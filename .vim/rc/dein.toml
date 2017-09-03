@@ -158,6 +158,10 @@ repo = 'jiangmiao/auto-pairs'
 [[plugins]]
 repo = 'itchyny/vim-cursorword'
 
+# Vim motions on speed!
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+
 #---------------------------------------------------------------------------
 # ColorScheme:
 #
