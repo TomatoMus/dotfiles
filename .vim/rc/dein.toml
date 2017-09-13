@@ -162,6 +162,14 @@ repo = 'itchyny/vim-cursorword'
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 
+# Deoplete source for emoji codes
+[[plugins]]
+repo = 'fszymanski/deoplete-emoji'
+
+# Syntax source for neocomplete/deoplete/ncm
+[[plugins]]
+repo = 'Shougo/neco-syntax'
+
 #---------------------------------------------------------------------------
 # ColorScheme:
 #
