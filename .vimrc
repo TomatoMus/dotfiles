@@ -3,6 +3,16 @@
 "---------------------------------------------------------------------------
 
 "---------------------------------------------------------------------------
+" Encoding:
+"
+
+" 文字コード
+set encoding=utf-8
+" rcのエンコーディング
+scriptencoding utf-8
+
+
+"---------------------------------------------------------------------------
 " Initialize:
 "
 
@@ -27,9 +37,11 @@ if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
   " プラグインリストを収めた TOML ファイル
   let s:toml      = g:rc_dir . '/dein.toml'
+  let s:ft_toml      = g:rc_dir . '/dein_ft.toml'
   let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
   " TOML を読み込み、キャッシュしておく
   call dein#load_toml(s:toml,      {'lazy': 0})
+  call dein#load_toml(s:ft_toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
   " 設定終了
   call dein#end()
@@ -40,7 +52,7 @@ if dein#check_install()
   call dein#install()
 endif
 " プラグインのアップデート
-" call dein#update()
+"   call dein#update()
 
 " シンタックス
 syntax on
@@ -51,15 +63,6 @@ filetype plugin indent on
 " Rictyフォントpowerline版
 set guifont=Ricty\ for\ Powerline\ 14
 " set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h14
-
-" 文字コード
-set encoding=utf-8
-scriptencoding utf-8
-
-
-"---------------------------------------------------------------------------
-" Encoding:
-"
 
 "---------------------------------------------------------------------------
 " Search:
@@ -82,7 +85,6 @@ autocmd BufReadPost *
       \ if line("'\"") > 0 && line ("'\"") <= line("$") |
       \   exe "normal! g'\"" |
       \ endif
-
 
 "---------------------------------------------------------------------------
 " Edit:
@@ -119,11 +121,9 @@ endif
 set shortmess& shortmess+=I
 
 " カラースキーマ
-colorscheme atom-dark-256
-" colorscheme material-theme
+" (tender, atom-dark-256, material-theme, OceanicNext)
 if has('nvim')
   colorscheme tender
-  " colorscheme OceanicNext
 endif
 
 " 絶対行番号表示
@@ -141,7 +141,10 @@ endif
 " タブページを常に表示
 set showtabline=2
 
-" 画面分割
+" ウィンドウ画面分割を右に
+set splitright
+
+" ウィンドウ画面分割を下に
 set splitbelow
 
 "不可視文字の文字の可視化
@@ -766,11 +769,11 @@ let g:mta_filetypes = {
 " Disable default mappings
 let g:EasyMotion_do_mapping = 0
 " `s{char}{char}{label}`
-nmap s <Plug>(easymotion-overwin-f2)
+nmap <C-m> <Plug>(easymotion-overwin-f2)
 " Smartcase
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1
-map ,, <Plug>(easymotion-prefix)
+" map <C-m> <Plug>(easymotion-prefix)
 
 "---------------------------------------------------------------------------
 " Others:
@@ -780,5 +783,3 @@ map ,, <Plug>(easymotion-prefix)
 set printoptions=number:y,left:5pc
 " プリント時のフォント
 set printfont=Ricty\ for\ Powerline\ 12
-
-

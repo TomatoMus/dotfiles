@@ -100,21 +100,21 @@ source $ZSH/oh-my-zsh.sh
 export PATH=/usr/local/bin:/usr/bin:$PATH
 
 # peco setting
-function peco-select-history() {
-    local tac
-    if which tac > /dev/null; then
-        tac="tac"
-    else
-        tac="tail -r"
-    fi
-    BUFFER=$(\history -n 1 | \
-        eval $tac | \
-        peco --query "$LBUFFER")
-    CURSOR=$#BUFFER
-    zle clear-screen
-}
-zle -N peco-select-history
-bindkey '^r' peco-select-history
+# function peco-select-history() {
+#     local tac
+#     if which tac > /dev/null; then
+#         tac="tac"
+#     else
+#         tac="tail -r"
+#     fi
+#     BUFFER=$(\history -n 1 | \
+#         eval $tac | \
+#         peco --query "$LBUFFER")
+#     CURSOR=$#BUFFER
+#     zle clear-screen
+# }
+# zle -N peco-select-history
+# bindkey '^r' peco-select-history
 
 # wedisagree setting
 function ph() {
@@ -271,3 +271,57 @@ export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
+
+# fzf
+function history-fzf() {
+    local tac=${commands[tac]:-"tail -r"}
+    BUFFER=$( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | sed 's/ *[0-9]* *//' | eval $tac | awk '!a[$0]++' | fzf-tmux +s --reverse)
+    CURSOR=$#BUFFER
+}
+zle     -N   history-fzf
+bindkey '^R' history-fzf
+
+function ghq-fzf() {
+  local selected_dir=$(ghq list | fzf-tmux --query="$LBUFFER" --reverse)
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd $(ghq root)/${selected_dir}"
+    zle accept-line
+  fi
+  zle reset-prompt
+}
+zle -N ghq-fzf
+bindkey "^G" ghq-fzf
+
+function tree-fzf() {
+  local SELECTED_FILE=$(tree --charset=o -f | fzf-tmux --query "$LBUFFER" --reverse | tr -d '\||`|-' | xargs echo)
+  if [ "$SELECTED_FILE" != "" ]; then
+    BUFFER="$EDITOR $SELECTED_FILE"
+    zle accept-line
+  fi
+  zle reset-prompt
+}
+zle -N tree-fzf
+bindkey "^T" tree-fzf
+
+
+function git-branch-fzf() {
+  local selected_branch=$(git for-each-ref --format='%(refname)' --sort=-committerdate refs/heads | perl -pne 's{^refs/heads/}{}' | fzf-tmux --query "$LBUFFER" --reverse )
+  if [ -n "$selected_branch" ]; then
+    BUFFER="git checkout ${selected_branch}"
+    zle accept-line
+  fi
+  zle reset-prompt
+}
+zle -N git-branch-fzf
+bindkey "^B" git-branch-fzf
+
+function ssh-fzf () {
+  local selected_host=$(grep "Host " ~/.ssh/config | grep -v '*' | cut -b 6- | fzf-tmux --query "$LBUFFER" --reverse )
+  if [ -n "$selected_host" ]; then
+    BUFFER="ssh ${selected_host}"
+    zle accept-line
+  fi
+  zle reset-prompt
+}
+zle -N ssh-fzf
+bindkey '^\' ssh-fzf
