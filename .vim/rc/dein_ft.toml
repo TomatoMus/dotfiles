@@ -99,53 +99,74 @@ on_ft = ['html', 'xml']
 # Javascript:
 #
 
-# Enhanced javascript syntax file
+# Vastly improved Javascript indentation and syntax support in Vim
 [[plugins]]
-repo = 'jelera/vim-javascript-syntax'
-on_ft = 'javascript'
+repo = 'pangloss/vim-javascript'
+on_ft = ['javascript', 'javascript.jsx']
+
+# YAJS.vim: Yet Another JavaScript Syntax for Vim
+[[plugins]]
+repo = 'othree/yajs.vim'
+on_ft = ['javascript', 'javascript.jsx']
+
+# ES.Next syntax for Vim
+[[plugins]]
+repo = 'othree/es.next.syntax.vim'
+on_ft = ['javascript', 'javascript.jsx']
+
+# Syntax for JavaScript libraries
+[[plugins]]
+repo = 'othree/javascript-libraries-syntax.vim'
+on_ft = ['javascript', 'javascript.jsx']
 
 # A vim javascript indent script
-[[plugins]]
-repo = 'jiangmiao/simple-javascript-indenter'
-on_ft = 'javascript'
+# [[plugins]]
+# repo = 'jiangmiao/simple-javascript-indenter'
+# on_ft = ['javascript', 'javascript.jsx']
 
 # Tern plugin for Vim
 [[plugins]]
 repo = 'marijnh/tern_for_vim'
-on_ft = 'javascript'
+on_ft = ['javascript', 'javascript.jsx']
 build = 'npm install'
 
 # deoplete.nvim source for javascript
 [[plugins]]
 repo = 'carlitux/deoplete-ternjs'
-on_ft = 'javascript'
+on_ft = ['javascript', 'javascript.jsx']
 if = 'has("nvim")'
 build = 'npm install -g tern'
 
-# deoplete.nvim source for javascript
+# React JSX syntax pretty highlighting for vim.
 [[plugins]]
-repo = 'mhartington/deoplete-typescript'
-on_ft = 'javascript'
-if = 'has("nvim")'
-build = 'npm -g install typescript'
-
-# React JSX syntax highlighting and indenting for vim.
-[[plugins]]
-repo = 'mxw/vim-jsx'
+repo = 'MaxMEllon/vim-jsx-pretty'
+on_ft = ['javascript', 'javascript.jsx']
 
 # Syntax Highligth for Vue.js components
 [[plugins]]
 repo = 'posva/vim-vue'
+on_ft = ['javascript', 'vue']
 
 # Generate JSDoc to your JavaScript code.
 [[plugins]]
 repo = 'heavenshell/vim-jsdoc'
-on_ft = 'javascript'
+on_ft = ['javascript', 'javascript.jsx']
 
 # Tools and environment to make Vim superb for developing with Node.js. Like Rails.vim for Node.
 [[plugins]]
 repo = 'moll/vim-node'
 on_ft = 'javascript'
+
+#---------------------------------------------------------------------------
+# Typescript:
+#
+
+# deoplete.nvim source for javascript
+[[plugins]]
+repo = 'mhartington/deoplete-typescript'
+on_ft = 'typescript'
+if = 'has("nvim")'
+build = 'npm -g install typescript'
 
 #---------------------------------------------------------------------------
 # YAML:
