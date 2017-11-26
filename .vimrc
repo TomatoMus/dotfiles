@@ -319,8 +319,9 @@ function! s:javascript_filetype_settings()
   setlocal shiftwidth=2
   setlocal cindent
 endfunction
-autocmd FileType javascript call s:javascript_filetype_settings()
+autocmd FileType javascript,json call s:javascript_filetype_settings()
 " autocmd BufRead,BufNewFile *.es6 setfiletype javascript
+autocmd BufRead,BufNewFile *.jsx set filetype=javascript.jsx
 
 " html
 function! s:html_filetype_settings()
@@ -814,6 +815,8 @@ autocmd FileType javascript,javascript.jsx call EnableJavascript()
 " vim-jsx-pretty
 let g:vim_jsx_pretty_colorful_config = 1
 
+" vim-jsx
+let g:jsx_ext_required = 0
 
 "---------------------------------------------------------------------------
 " Others:
